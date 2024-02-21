@@ -10,7 +10,7 @@ app = Flask(__name__)
 connection = sqlite3.connect("school.db")
 
 if (not connection):
-    print("db couldnt connect successfully")
+    print("db couldn't connect successfully")
 else:
     print("successfully connected to db")
 

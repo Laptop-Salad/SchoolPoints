@@ -19,6 +19,6 @@ def teacher():
     return "<h1>Teacher Dashboard</h1>"
 
 @app.route("/student/<studentid>", methods=['GET'])
-def student():
+def student(studentid):
     return """<h1>Student Dashboard</h1>
-    <p>""" + request.args.get('studentid') + """</p>"""
+    <p>""" + studentid + """</p>"""
