@@ -16,4 +16,4 @@ except sqlite3.Error as error:
 finally:
     if conn:
         conn.close()
-        #connection to database is closed
+        #connection to database is closeed
