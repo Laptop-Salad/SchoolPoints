@@ -1,12 +1,175 @@
 body {
     margin: 0;
-    background: #222;
+
+}
+header {
+    background: bisque;
 }
 header::after {
-    content: ' ';
+    content: '';
     display: table;
     clear: both;
 }
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
 logo {
     float: left;
+    padding: 10px 0;
 }
+nav {
+    float: right;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 0px;
+    position: relative;
+}
+
+nav a {
+    text-transform: upperase;
+    font-size: 14px;
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 5px 0px;
+    text-decoration: none;
+}
+nav a:hover{
+
+    background-color: yellow;
+}
+
+
+
+
+.drop1 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop1cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop1cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop1cont a:hover {
+
+    background-color: pink;
+}
+
+.drop1:hover .drop1cont {
+    display: block;
+}
+
+.drop2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop2cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop2cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop2cont a:hover {
+
+    background-color: pink;
+}
+
+.drop2:hover .drop2cont {
+    display: block;
+}
+
+.drop2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop2cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop2cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop2cont a:hover {
+
+    background-color: pink;
+}
+
+.drop2:hover .drop2cont {
+    display: block;
+}
+
+footer{
+    display: block;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
