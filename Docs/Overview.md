@@ -3,9 +3,9 @@
 https://flask.palletsprojects.com/en/2.3.x/tutorial/templates/ - We can use the jinja2 templating engine to be able to use the same footer for different pages.
 
 # Login
-* When a student logs in successfully they will be redirected to /student/<their student id>
+* When a student logs in successfully they will be redirected to /student/{student id}
 * When a teacher logs in successfully they will be redirected to /teacher
-* When a parent logs in successfully they will be redirected to /student/<studentid>
+* When a parent logs in successfully they will be redirected to /student/{student id}
 
 On first login of student, teacher they will be redirected to /changepassword.
 
@@ -15,6 +15,15 @@ https://testdriven.io/blog/flask-sessions/ - verify someone is logged in by savi
 ```
 Destory current session
 Display "Successfully Logged out"
+```
+
+# Change Password
+PUT to changepassword
+
+```
+Ensure there is someone logged in
+
+Display form to change password
 ```
 
 # Teacher Dashboard
@@ -52,6 +61,8 @@ IF parent
 ```
 
 # In Grades/Attendance/Behaviour/Other
+POST to updatestudent/{studentid}
+
 ```
 Path: student/23/attendance
 
