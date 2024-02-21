@@ -1,19 +1,37 @@
 import sqlite3
+from sqlite3 import Error
 
-try:
-    conn = sqlite3.connect("school.db")
-    cursor = conn.cursor()
-    #connected to database
 
-    query = """INSERT INTO houses (studentid, housename)
-    VALUES (1,"Blue")"""
-    cursor.execute(query)
-    record = cursor.fetchall()
-    # SQL version is recorded
+conn = sqlite3.connect("school.db")
 
-except sqlite3.Error as error:
-    print(error)
-finally:
-    if conn:
-        conn.close()
-        #connection to database is closeed
+
+cursor = conn.cursor()
+
+#add to students table
+cursor.execute("""INSERT INTO students(username, password)
+    VALUES ("Tim", "PasswordAHH")""")
+
+#add to teachers table
+#cursor.execute("""INSERT INTO teachers(username, password)
+ #   VALUES ("Tommyteacher", "Password1")"""
+  #             )
+
+#add to parents table
+#.execute("""INSERT INTO parents(username, password, studentid)
+ #   VALUES ("PamParent", "Password1", 1)"""
+  #             )
+
+#add to points table
+#cursor.execute("""INSERT INTO points(studentid, teacherid, comment, behaviour, grades, attendance, other)
+ #   VALUES (1, 1, "you r cool", 80, 80, 80, 80 )"""
+           #    )
+
+#add to houses table
+#cursor.execute("""INSERT INTO houses (studentid, housename)
+ #   VALUES (1, "Blue")"""
+             #  )
+conn.commit()
+conn.close()
+
+
+
