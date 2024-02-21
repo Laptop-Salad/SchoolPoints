@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    background: #222;
+}
+header::after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+logo {
+    float: left;
+}
