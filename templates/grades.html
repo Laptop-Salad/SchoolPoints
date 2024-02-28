@@ -32,7 +32,24 @@
 </header>
 
 
+<div>
+    <p>Total Points: {{ grades.totalPoints}}</p>
 
+    <table>
+        <tr>
+            <th>Points</th>
+            <th>Comment</th>
+            <th>Teacher</th>
+        </tr>
+        {% for i in range(grades.comments|length) %}
+        <tr>
+            <td>{{ grades.points[i] }}</td>
+            <td>{{ grades.comments[i] }}</td>
+            <td>{{ grades.teachers[i] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 <footer>
     <p> bob grades </p>
