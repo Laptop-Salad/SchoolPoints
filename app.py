@@ -22,5 +22,25 @@ def teacher():
 def student(studentid):
     return render_template("dashboard.html")
 
+# Dashboard: Attendance, grades, behaviour, others
+
+@app.route("/student/<studentid>/attendance", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("attendance.html")
+
+@app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("grades.html")
+
+
+@app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("grades.html")
+
+
+@app.route("/student/<studentid>/others", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("others.html")
+
 if __name__ == '__main__':
    app.run()
