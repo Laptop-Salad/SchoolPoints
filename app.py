@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -20,5 +20,27 @@ def teacher():
 
 @app.route("/student/<studentid>", methods=['GET'])
 def student(studentid):
-    return """<h1>Student Dashboard</h1>
-    <p>""" + studentid + """</p>"""
+    return render_template("dashboard.html")
+
+# Dashboard: Attendance, grades, behaviour, others
+
+@app.route("/student/<studentid>/attendance", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("attendance.html")
+
+@app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("grades.html")
+
+
+@app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("grades.html")
+
+
+@app.route("/student/<studentid>/others", methods=['GET', 'POST'])
+def student(studentid):
+    return render_template("others.html")
+
+if __name__ == '__main__':
+   app.run()
