@@ -21,10 +21,9 @@ id INTEGER PRIMARY KEY, <br>
 studentid INTEGER, <br>
 teacherid INTEGER, <br>
 comment TEXT,<br>
-behaviour INTEGER, <br>
-grades INTEGER, <br>
-attendance INTEGER, <br>
-other INTEGER <br>
+pointsTo TEXT, <br>
+
+note: pointsTo can be "b", "g", "a" or "o"
 
 ^ note behaviour, grades, attendance, other can be negative to subtract points, all points will be added together to get current points 
 
