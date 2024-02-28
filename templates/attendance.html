@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Attendance</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body>
 <header>
@@ -31,6 +31,24 @@
     </div>
 </header>
 
+<div>
+    <p>Total Points: {{ attendance.totalPoints}}</p>
+
+    <table>
+        <tr>
+            <th>Points</th>
+            <th>Comment</th>
+            <th>Teacher</th>
+        </tr>
+        {% for i in range(attendance.comments|length) %}
+        <tr>
+            <td>{{ attendance.points[i] }}</td>
+            <td>{{ attendance.comments[i] }}</td>
+            <td>{{ attendance.teachers[i] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 
 <footer>

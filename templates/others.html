@@ -32,7 +32,22 @@
 </header>
 
 <div>
+    <p>Total Points: {{ others.totalPoints}}</p>
 
+    <table>
+        <tr>
+            <th>Points</th>
+            <th>Comment</th>
+            <th>Teacher</th>
+        </tr>
+        {% for i in range(others.comments|length) %}
+        <tr>
+            <td>{{ others.points[i] }}</td>
+            <td>{{ others.comments[i] }}</td>
+            <td>{{ others.teachers[i] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 
 <footer>
