@@ -1,5 +1,11 @@
 from flask import Flask, render_template
 
+import sys
+sys.path.append("controllers/")
+
+from behavior import Student
+
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -18,29 +24,34 @@ def changepassword():
 def teacher():
     return "<h1>Teacher Dashboard</h1>"
 
+# Dashboard: Attendance, grades, behaviour, others
 @app.route("/student/<studentid>", methods=['GET'])
 def student(studentid):
-    return render_template("dashboard.html")
+    return render_template("dashboard.html", student_num = studentid)
 
-# Dashboard: Attendance, grades, behaviour, others
+# Behaviour
+@app.route("/student/<studentid>/behaviour", methods=['GET', 'POST'])
+def student_behaviour(studentid):
+    student = Student()
+    behaviors = student.get_behavior(studentid)
+    return render_template("behavior.html", behaviors=behaviors)
 
+# Attendance
 @app.route("/student/<studentid>/attendance", methods=['GET', 'POST'])
-def student(studentid):
+def student_attendance(studentid):
     return render_template("attendance.html")
 
+# Grades
 @app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
-def student(studentid):
+def student_grades(studentid):
     return render_template("grades.html")
 
-
-@app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
-def student(studentid):
-    return render_template("grades.html")
-
-
+# Others
 @app.route("/student/<studentid>/others", methods=['GET', 'POST'])
-def student(studentid):
+def student_others(studentid):
     return render_template("others.html")
+
+# End of dashboard routes
 
 if __name__ == '__main__':
    app.run()
