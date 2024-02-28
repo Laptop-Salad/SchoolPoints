@@ -52,3 +52,5 @@ def teacherLogin():
         check = check =  str(check [0])
         check = check[1:2]
         print("Id is" , check)
+
+studentLogin()
