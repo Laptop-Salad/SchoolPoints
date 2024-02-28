@@ -10,13 +10,21 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: seagreen;
+    background: url('img.jpg')  no-repeat ;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
 }
+
+
 
 .wrapper{
     width: 420px;
-    background: purple;
+    background: transparent;
     color: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     border-radius: 10px;
     padding: 30px 40px;
 }
