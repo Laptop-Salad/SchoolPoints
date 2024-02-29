@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body>
@@ -37,18 +38,23 @@
         <div class="points">_______</div> <!-- New text -->
     </div>
     <div class="top-squares">
-        <a href="/student/{{ student_num }}/behaviour" class="square">
+
+<!--      <a href="/student/{{ student_num }}/behaviour" class="square">-->
+          <a href="../templates/behavior.html" class="square">
             <div>Behavior</div>
-        </a>
-        <a href="/student/{{ student_num }}/grades" class="square">
+          </a>
+<!--        <a href="/student/{{ student_num }}/grades" class="square">-->
+            <a href="../templates/grades.html" class="square">
             <div>Grades</div>
-        </a>
+            </a>
     </div>
     <div class="bottom-squares">
-        <a href="/student/{{ student_num }}/attendance" class="square">
+<!--        <a href="/student/{{ student_num }}/attendance" class="square">-->
+            <a href="../templates/attendance.html" class="square">
             <div>Attendance</div>
         </a>
-        <a href="/student/{{ student_num }}/others" class="square">
+<!--        <a href="/student/{{ student_num }}/others" class="square">-->
+            <a href="../templates/others.html" class="square">
             <div>Others</div>
         </a>
     </div>
