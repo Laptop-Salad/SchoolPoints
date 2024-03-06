@@ -1,9 +1,6 @@
 from flask import Flask
 import sqlite3
 
-# This file would probably be run once? To connect to the db we use another file?
-
-
 app = Flask(__name__)
 
 # Create a db named school db if doesnt exist yet

@@ -157,4 +157,20 @@ class Student:
         }
 
         conn.commit()
-        conn.close() 
+        conn.close()
+
+    def get_summary(self, studentid):
+        behavior = self.get_behavior(studentid)["totalPoints"]
+        attendance = self.get_attendance(studentid)["totalPoints"]
+        grades = self.get_grades(studentid)["totalPoints"]
+        others = self.get_others(studentid)["totalPoints"]
+
+        total_points = behavior + attendance + grades + others
+
+        return {
+            "behavior_points": behavior,
+            "attendance_points": attendance,
+            "grades_points": grades,
+            "others_points": others,
+            "total_points": total_points
+        }
