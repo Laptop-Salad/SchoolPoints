@@ -42,7 +42,7 @@ class login:
         cursor.execute("SELECT id FROM teachers WHERE username = %s AND Password = %s" %(username, password))
         check = cursor.fetchall()
         return check
-
+#
 #
 
     def parentCheckLogin(username, password):
