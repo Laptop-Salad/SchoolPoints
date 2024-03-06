@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Attendance</title>
     <link rel="stylesheet" href="../static/styles/style.css">
-<!--    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">-->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body>
 <header>
@@ -33,22 +33,27 @@
 </header>
 
 <div>
-    <p>Total Points: {{ attendance.totalPoints}}</p>
-
-    <table>
-        <tr>
-            <th>Points</th>
-            <th>Comment</th>
-            <th>Teacher</th>
-        </tr>
-        {% for i in range(attendance.comments|length) %}
-        <tr>
-            <td>{{ attendance.points[i] }}</td>
-            <td>{{ attendance.comments[i] }}</td>
-            <td>{{ attendance.teachers[i] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="containerdd">
+        <div class="Tpoints">
+            <p>Total Points: {{ attendance.totalPoints}}</p>
+        </div>
+        <div class="teacher-info">
+            <table>
+                <tr>
+                    <th>Teacher</th>
+                    <th>Comment</th>
+                    <th>Points</th>
+                </tr>
+                {% for i in range(attendance.comments|length) %}
+                <tr>
+                    <td>{{ attendance.teachers[i] }}</td>
+                    <td>{{ attendance.comments[i] }}</td>
+                    <td>{{ attendance.points[i] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
 
 

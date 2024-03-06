@@ -34,22 +34,27 @@
 
 
 <div>
-    <p>Total Points: {{ grades.totalPoints}}</p>
-
-    <table>
-        <tr>
-            <th>Points</th>
-            <th>Comment</th>
-            <th>Teacher</th>
-        </tr>
-        {% for i in range(grades.comments|length) %}
-        <tr>
-            <td>{{ grades.points[i] }}</td>
-            <td>{{ grades.comments[i] }}</td>
-            <td>{{ grades.teachers[i] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="containerdd">
+        <div class="Tpoints">
+            <p>Total Points: {{ grades.totalPoints}}</p>
+        </div>
+        <div class="teacher-info">
+            <table>
+                <tr>
+                    <th>Teacher</th>
+                    <th>Comment</th>
+                    <th>Points</th>
+                </tr>
+                {% for i in range(grades.comments|length) %}
+                <tr>
+                    <td>{{ grades.teachers[i] }}</td>
+                    <td>{{ grades.comments[i] }}</td>
+                    <td>{{ grades.points[i] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
 
 <footer>
