@@ -4,7 +4,7 @@ import sys
 sys.path.append("controllers/")
 
 from behavior import Student
-
+from login import login
 
 app = Flask(__name__)
 
@@ -70,6 +70,23 @@ def student_others(studentid):
         return "<h1>POST</h1>"
     
 # End of dashboard routes
+
+#student login
+
+@app.route('/loginUI', method=['GET', 'POST'])
+def student_Login():
+    if request.method == "GET":
+        username = request.form['Username']
+        password = request.form['Password']
+
+        check = login.studentCheckLogin(username, password)
+        if check == True:
+            id = login.studentLogin(username, password)
+            return render_template("dashboard", studentid = id)
+        else:
+            return 'incorrect username or password'
+    else:
+        return "<h1> POST </H1>"
 
 if __name__ == '__main__':
    app.run()
