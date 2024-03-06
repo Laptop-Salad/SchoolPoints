@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 import sys
 sys.path.append("controllers/")
 
-from behavior import Student
+from student import Student
 from teacher import Teacher
 from search_students import SearchStudents
 
@@ -42,7 +42,10 @@ def search_students(term):
 # Dashboard: Attendance, grades, behaviour, others
 @app.route("/student/<studentid>", methods=['GET'])
 def student(studentid):
-    return render_template("dashboard.html", student_num = studentid)
+    student = Student()
+    summary = student.get_summary(studentid)
+    return render_template("dashboard.html", student_num = studentid, summary=summary)
+
 
 # Behaviour
 @app.route("/student/<studentid>/behaviour", methods=['GET'])

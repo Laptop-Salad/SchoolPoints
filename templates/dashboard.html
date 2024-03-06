@@ -35,27 +35,27 @@
 <div class="containerd">
     <div class="total-points">
         <div>Total points</div>
-        <div class="points">_______</div> <!-- New text -->
+        <div class="points">{{ summary.total_points }}</div> <!-- New text -->
     </div>
     <div class="top-squares">
 
       <a href="/student/{{ student_num }}/behaviour" class="square">
             <div>Behavior</div>
-              <div class="square-text">_______</div>
+              <div class="square-text">{{ summary.behavior_points }}</div>
           </a>
         <a href="/student/{{ student_num }}/grades" class="square">
             <div>Grades</div>
-                <div class="square-text">_______</div>
+                <div class="square-text">{{ summary.grades_points }}</div>
             </a>
     </div>
     <div class="bottom-squares">
         <a href="/student/{{ student_num }}/attendance" class="square">
             <div>Attendance</div>
-                <div class="square-text">_______</div>
+                <div class="square-text">{{ summary.grades_points }}</div>
         </a>
         <a href="/student/{{ student_num }}/others" class="square">
             <div>Others</div>
-                <div class="square-text">_______</div>
+                <div class="square-text">{{ summary.others_points }}</div>
         </a>
     </div>
 </div>
