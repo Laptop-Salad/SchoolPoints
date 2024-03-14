@@ -7,6 +7,7 @@ class SearchStudents:
     def get_like_students(self, term):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
+        
         decoded_term = "%" + urllib.parse.unquote(term) + "%"
 
         # Get all like students

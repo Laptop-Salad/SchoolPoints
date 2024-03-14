@@ -4,17 +4,15 @@ const searchInput = document.getElementById("searchStudents");
 
 searchInput.addEventListener("input", () => {
     initResults.style.display = "none";
+    let currTerm = searchInput.value;
 
-    getSearchRes();
+    if (currTerm) {
+        getSearchRes();
+    }
 });
 
 function getSearchRes() {
     let currTerm = searchInput.value;
-
-    if (currTerm == "") {
-        initResults.style.display = "block";
-        return;
-    }
 
     let xmlhttp = new XMLHttpRequest();
 
