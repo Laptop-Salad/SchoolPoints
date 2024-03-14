@@ -42,7 +42,18 @@ def search_students(term):
 # Dashboard: Attendance, grades, behaviour, others
 @app.route("/student/<studentid>", methods=['GET'])
 def student(studentid):
-    return render_template("dashboard.html", student_num = studentid)
+    student = Student()
+    attendance = student.get_attendance(studentid)
+    behavior = student.get_behavior(studentid)
+    grades = student.get_grades(studentid)
+    others = student.get_others(studentid)
+
+
+    return render_template("dashboard.html", student_num = studentid,
+                           attendance=attendance,
+                           behavior=behavior,
+                           grades=grades,
+                           others=others)
 
 # Behaviour
 @app.route("/student/<studentid>/behaviour", methods=['GET', 'POST'])
