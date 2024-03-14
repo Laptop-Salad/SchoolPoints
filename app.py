@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 import sys
 sys.path.append("controllers/")
 
-from behavior import Student
+from student import Student
 from login import login
 
 app = Flask(__name__)
@@ -73,7 +73,7 @@ def student_others(studentid):
 
 #student login
 
-@app.route('/loginUI', method=['GET', 'POST'])
+@app.route('/loginUI', methods=['GET', 'POST'])
 def student_Login():
     if request.method == "GET":
         username = request.form['Username']
