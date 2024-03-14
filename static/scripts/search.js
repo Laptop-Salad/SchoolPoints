@@ -32,9 +32,11 @@ function getSearchRes() {
                     var student_id = student_ids[i];
 
                     searchResults.innerHTML += `
-                    <div>
+                    <div class="findS">
+                        <div class="student-info-box">
                         <p> ${student_name} </p>
-                        <a href='/student/${student_id}'> ${student_name} Dashboard </a>
+                        <a href='/student/${student_id}'>Select</a>
+                        </div>
                     </div>
                     `;
                 }
