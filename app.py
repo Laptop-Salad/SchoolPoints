@@ -128,17 +128,52 @@ def student_others(studentid):
 @app.route('/loginUI', methods=['GET', 'POST'])
 def student_Login():
     if request.method == "GET":
-        return render_template("SloginUI.html")
+        return render_template("loginUI.html")
     else:
         username = request.form['Username']
         password = request.form['Password']
+        print(username, password)
+
+        login = Login()
 
         check = login.studentCheckLogin(username, password)
         if check == True:
             id = login.studentLogin(username, password)
-            return render_template("dashboard", studentid = id)
+            return redirect("/dashboard")
         else:
             return 'incorrect username or password'
+
+#leaderboard
+@app.route('/leaderboard', methods=['GET', 'POST'])
+def leaderboardcalc():
+    losingTotal = 0
+    winningTotal = 0
+    winningHouse = "Winning house"
+    losingHouse = "losing house"
+    if request.method == "GET":
+        leaderboard = Leaderboard()
+        #get the total points for the blue house
+        blueTotal = leaderboard.getBlueTotal()
+
+        #get the total points for the red house
+        redTotal = leaderboard.getRedTotal()
+
+        #calc which of the houses has the most points
+        winningHouse = leaderboard.winningHouse(redTotal, blueTotal)
+
+        #set the winning/losing house and points to the right varible
+        if winningHouse == "blue":
+            losingHouse = "Red Rabbits"
+            losingTotal = redTotal
+            winningTotal = blueTotal
+        else:
+            losingHouse = "Blue"
+            losingTotal = blueTotal
+            winningTotal =redTotal
+
+        return render_template("leaderboard.html", winningTotal = winningTotal, winners = winningHouse, losingTotal = losingTotal, losers = losingHouse)
+    else:
+        return "<h1> POST </h1>"
 
 if __name__ == '__main__':
    app.run()

@@ -11,25 +11,41 @@ cursor = conn.cursor()
 #figure out which one is first, second, third and last
 
 
-cursor.execute("SELECT studentid FROM houses WHERE housename = 'Blue'")
-blueStudents = cursor.fetchall()
+class Leaderboard:
 
-cursor.execute("SELECT studentid FROM houses WHERE housename = 'Red Rabbits'")
-redStudents = cursor.fetchall()
+    def getBlueTotal(self):
+        #find every student that is in the blue house
+        cursor.execute("SELECT studentid FROM houses WHERE housename = 'Blue'")
+        blueStudents = cursor.fetchall()
 
-for i in range ((len(blueStudents))-1):
-    cursor.execute("SELECT SUM(points) FROM points WHERE  %s", (blueStudents[i]))
-    studentspointsBlue1 = cursor.fetchall()
-    blueTotal = blueTotal + studentspointsBlue1
+        #look through the points and for every student that was in the blue house get the total of the points
+        for i in range ((len(blueStudents))-1):
+            cursor.execute("SELECT SUM(points) FROM points WHERE  %s", (blueStudents[i]))
+            studentspointsBlue1 = cursor.fetchall()
+            blueTotal = blueTotal + studentspointsBlue1
+        return blueTotal
 
-for i in range ((len(redStudents))-1):
-    cursor.execute("SELECT SUM(points) FROM points WHERE  %s", (redStudents[i]))
-    studentspointsRed1 = cursor.fetchall()
-    redTotal = redTotal + studentspointsRed1
+    def getRedTotal(self):
+        #find every student that is in the red house
+        cursor.execute("SELECT studentid FROM houses WHERE housename = 'Red Rabbits'")
+        redStudents = cursor.fetchall()
 
-if redTotal > blueTotal:
-    print("red has the most points: ", redTotal)
-else:
-    print("Blue has the most points: ", blueTotal)
+        #look through the points and for every student that was in the red house get the total of the points
+        for i in range ((len(redStudents))-1):
+            cursor.execute("SELECT SUM(points) FROM points WHERE  %s", (redStudents[i]))
+            studentspointsRed1 = cursor.fetchall()
+            redTotal = redTotal + studentspointsRed1
+        return redTotal
+
+    def winningHouse(self, redTotal, blueTotal):
+        #find out which house has the most points
+        if redTotal > blueTotal:
+            winner = "Red Rabbits"
+        else:
+            winner = "blue"
+        return winner
+
+
+
 
 
