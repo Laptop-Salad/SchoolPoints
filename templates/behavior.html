@@ -11,6 +11,12 @@
 
 {% include "header.html" %}
 
+<form action="/student/{{ student_num }}/behaviour" method="POST">
+    <input type="text" name="comment" id="comment" placeholder="Comment">
+    <input type="number" name="points" id="points" placeholder="Points">
+    <input type="submit" value="Add">
+</form>
+
 <div>
     <div class="containerdd">
         <div class="Tpoints">

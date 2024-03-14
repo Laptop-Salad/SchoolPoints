@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 import sys
 sys.path.append("controllers/")
@@ -7,6 +7,7 @@ from student import Student
 from teacher import Teacher
 from search_students import SearchStudents
 from login import login
+from addToStudent import AddToStudent
 
 app = Flask(__name__)
 
@@ -63,7 +64,13 @@ def student_behaviour(studentid):
         behaviors = student.get_behavior(studentid)
         return render_template("behavior.html", behaviors=behaviors, student_num = studentid)
     else:
-        return "<h1>POST</h1>"
+        comment = request.form.get("comment")
+        points = request.form.get("points")
+
+        add_to_student = AddToStudent()
+        add_to_student.add_points(studentid, 1, comment, points, "B")
+        redirect_url = "/student/" + studentid + "/behaviour"
+        return redirect(redirect_url, code=302)
     
 # Attendance
 @app.route("/student/<studentid>/attendance", methods=['GET', 'POST'])
@@ -73,8 +80,14 @@ def student_attendance(studentid):
         attendance = student.get_attendance(studentid)
         return render_template("attendance.html", attendance=attendance, student_num = studentid)
     else:
-        return "<h1>POST</h1>"
+        comment = request.form.get("comment")
+        points = request.form.get("points")
 
+        add_to_student = AddToStudent()
+        add_to_student.add_points(studentid, 1, comment, points, "A")
+        redirect_url = "/student/" + studentid + "/attendance"
+        return redirect(redirect_url, code=302)
+        
 # Grades
 @app.route("/student/<studentid>/grades", methods=['GET', 'POST'])
 def student_grades(studentid):
@@ -83,7 +96,13 @@ def student_grades(studentid):
         grades = student.get_grades(studentid)
         return render_template("grades.html", grades=grades, student_num = studentid)
     else:
-        return "<h1>POST</h1>"
+        comment = request.form.get("comment")
+        points = request.form.get("points")
+
+        add_to_student = AddToStudent()
+        add_to_student.add_points(studentid, 1, comment, points, "G")
+        redirect_url = "/student/" + studentid + "/grades"
+        return redirect(redirect_url, code=302)
 
 # Others
 @app.route("/student/<studentid>/others", methods=['GET', 'POST'])
@@ -93,7 +112,14 @@ def student_others(studentid):
         others = student.get_others(studentid)
         return render_template("others.html", others=others, student_num = studentid)
     else:
-        return "<h1>POST</h1>"
+        comment = request.form.get("comment")
+        points = request.form.get("points")
+
+        add_to_student = AddToStudent()
+        add_to_student.add_points(studentid, 1, comment, points, "O")
+        redirect_url = "/student/" + studentid + "/others"
+        return redirect(redirect_url, code=302)
+
     
 # End of dashboard routes
 
@@ -102,7 +128,7 @@ def student_others(studentid):
 @app.route('/loginUI', methods=['GET', 'POST'])
 def student_Login():
     if request.method == "GET":
-        return render_template("loginUI.html")
+        return render_template("SloginUI.html")
     else:
         username = request.form['Username']
         password = request.form['Password']
