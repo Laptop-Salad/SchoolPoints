@@ -1,0 +1,299 @@
+body {
+    margin: 0;
+
+}
+header {
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+}
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+logo {
+    float: left;
+    padding: 0px 0;
+}
+
+
+nav {
+    float: right;
+}
+nav ul {
+    margin: 4px;
+    padding: 5px;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 0px;
+    position: relative;
+}
+
+nav a {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 5px 0px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+}
+
+nav a:hover {
+    background-color: #FBC528;
+    box-shadow: 0 0 20px 10px rgb(251, 197, 40); /* Increase blur effect */
+}
+nav li.active a {
+    position: relative; /* Ensure positioning works properly */
+    color: grey; /* Set the text color for the active link */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+nav li.active a::after {
+    content: ''; /* Create the underline */
+    position: absolute; /* Position the underline */
+    left: 0;
+    bottom: 14px; /* Adjust the distance of the underline from the text */
+    width: 100%; /* Make the underline span the entire width */
+    border-bottom: 2px solid lightcoral; /* Style the underline */
+}
+nav li.active a:hover {
+    background-color: transparent;
+}
+
+
+
+.drop1 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop1cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+.drop1cont {
+    left: 47%; /* Adjust as needed */
+    top: 100%; /* Position it below the parent element */
+    transform: translateX(-50%); /* Center the dropdown horizontally */
+}
+.drop2cont {
+    left: 47%; /* Adjust as needed */
+    top: 100%; /* Position it below the parent element */
+    transform: translateX(-50%); /* Center the dropdown horizontally */
+}
+
+.drop1cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop1cont a:hover {
+
+    background-color: #FBC528;
+    box-shadow: none; /* Reset box-shadow for dropdown items */
+}
+
+.drop1:hover .drop1cont {
+    display: block;
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+}
+
+.drop2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop2cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop2cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop2cont a:hover {
+
+    background-color: #FBC528;
+    box-shadow: none; /* Reset box-shadow for dropdown items */
+}
+
+.drop2:hover .drop2cont {
+    display: block;
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+}
+
+.drop2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop2cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop2cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop2cont a:hover {
+
+    background-color: #FBC528;
+}
+
+.drop2:hover .drop2cont {
+    display: block;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    text-align: center;
+}
+
+body {
+    background: url('../images/photo3.jpg') no-repeat;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.All {
+    width: 420px;
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin: 100px auto 0; /* Adjusted margin-top to move the .All box down */
+    text-align: center;
+}
+.findS {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+
+}
+
+.findS p {
+    margin-right: 20px; /* Increase the margin between the student name and the link */
+}
+.findS a {
+    margin-left: 10px; /* Adjusted margin-left to create a little space */
+}
+.All .input-box {
+    position: relative;
+    width: 80%;
+    height: 20px;
+    margin: 30px auto; /* Center the input-box horizontally */
+}
+
+.input-box input{
+    width: 80%;
+    height: 30%;
+    background: white;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color:black;
+    padding: 20px 45px 20px 20px;
+
+}
+
+.input-box input::placeholder{
+    color:white;
+}
+
+.student-info-box {
+    background-color: transparent; /* Set background color to transparent */
+    border: 2px solid white; /* Add white border */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    padding: 10px; /* Add padding to create space inside the box */
+    margin-top: 10px; /* Add margin-top for spacing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%; /* Set the width to 80% */
+    height: 10px;
+    transition: background-color 0.3s; /* Add transition for smooth color change */
+}
+
+.student-info-box:hover {
+    background-color: white; /* Change background color to white when hovered */
+}
+
+.student-info-box p {
+    padding-right: 20px; /* Increase the padding-right for more space */
+    color: black;
+}
+.student-info-box a {
+    padding-left: 20px; /* Increase the padding-left for more space */
+}
+
+
+
+
+
+
+

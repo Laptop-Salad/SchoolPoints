@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TeacherSearch</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/Tstyle.css') }}">
+</head>
+<body>
+{% include "header.html" %}
+
+
+<div>
+    <div class ="All">
+        <h1>Search for a student</h1>
+        <div class="input-box">
+            <input id="searchStudents" name="searchStudents" type="text">
+            <!-- When styling this, if your styles don't work after searching you need to add the same thing in search.js
+            OR tell me -->
+            <!--  initResults is set to display: block in search.js. If needs changing do so in search.js and stylesheet.
+              OR ask me-->
+        </div>
+        <div id="searchResults"></div>
+
+
+        <div id="initResults">
+            {% for i in range(students.student_names|length) %}
+            <div class ="findS">
+                <div class="student-info-box">
+                    <p>{{ students.student_names[i] }}</p>
+                    <a href="/student/{{ students.student_ids[i]}}">Select</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static',filename='scripts/search.js') }}"></script>
+
+{% include "footer.html" %}
+
+</body>
+</html>
