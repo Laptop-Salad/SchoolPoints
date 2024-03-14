@@ -4,6 +4,8 @@ import sys
 sys.path.append("controllers/")
 
 from student import Student
+from teacher import Teacher
+from search_students import SearchStudents
 from login import login
 
 app = Flask(__name__)
@@ -20,9 +22,22 @@ def logout():
 def changepassword():
     return "<h1>Change Password</h1>"
 
-@app.route("/teacher", methods=['GET'])
-def teacher():
-    return "<h1>Teacher Dashboard</h1>"
+# Teacher dashboard
+@app.route("/teacher/<teacherid>", methods=['GET'])
+def teacher(teacherid):
+    if request.method == "GET":
+        teacher = Teacher()
+        teacher_name = teacher.dashboard_data(teacherid)
+        students = teacher.get_all_students()
+        return render_template("teacherDashboard.html", teacher_name=teacher_name, students=students)
+
+# Search for students
+@app.route("/searchstudents/<term>", methods=['GET'])
+def search_students(term):
+    if request.method == "GET":
+        search_students = SearchStudents()
+        res = search_students.get_like_students(term)
+        return res
 
 # Dashboard: Attendance, grades, behaviour, others
 @app.route("/student/<studentid>", methods=['GET'])
@@ -76,6 +91,8 @@ def student_others(studentid):
 @app.route('/loginUI', methods=['GET', 'POST'])
 def student_Login():
     if request.method == "GET":
+        return render_template("loginUI.html")
+    else:
         username = request.form['Username']
         password = request.form['Password']
 
@@ -85,8 +102,6 @@ def student_Login():
             return render_template("dashboard", studentid = id)
         else:
             return 'incorrect username or password'
-    else:
-        return "<h1> POST </H1>"
 
 if __name__ == '__main__':
    app.run()
