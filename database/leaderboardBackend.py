@@ -5,11 +5,6 @@ conn = sqlite3.connect("../databases/school.db")
 
 cursor = conn.cursor()
 
-#for each house get the id's of the students
-#each house get the total points for each student
-#add up all the points for each house
-#figure out which one is first, second, third and last
-
 
 class Leaderboard:
 
