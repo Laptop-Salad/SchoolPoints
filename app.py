@@ -139,8 +139,10 @@ def student_Login():
 
         login = Login()
 
+        #check to see if username and password are correct
         check = login.studentCheckLogin(username, password)
         if check == True:
+            #if the username and password are correct get the id
             id = login.studentLogin(username, password)
             id = str(id[1:2])
             return redirect("../templates/dashboard", id= id)
