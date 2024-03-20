@@ -7,6 +7,7 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 
 }
+
 header::after {
     content: '';
     display: table;
@@ -20,7 +21,12 @@ header::after {
 logo {
     float: left;
     padding: 0px 0;
+    font-family: "Felipa", serif;
+    font-weight: 400;
+    font-style: normal;
+
 }
+
 
 
 nav {
@@ -339,7 +345,7 @@ body {
 
 .total-points {
     position: absolute;
-    top: 18%; /* Adjust to center vertically */
+    top: 15%; /* Adjust to center vertically */
     transform: translateY(-50%);
     text-align: center; /* Center the text */
     display: flex; /* Use flexbox for centering */
@@ -373,12 +379,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 70vh; /* Adjust as needed */
+    height: 60vh; /* Adjust as needed */
 }
 
 .Tpoints {
     position: absolute;
-    top: 18%;
+    top: 10%;
+
     transform: translateY(-50%);
     text-align: center;
     display: flex;
@@ -512,3 +519,121 @@ body{
         background-color: #F796F1; /* Violet */
     }
 }
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group input {
+    width: 150px; /* Adjust width as needed */
+}
+
+
+.comment-input, .points-input {
+    background-color: #EEDCCB;
+    border: 2px solid ; /* Add white border */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    padding: 10px; /* Add padding to create space inside the box */
+    margin-top: 10px; /* Add margin-top for spacing */
+    width: 40%; /* Set the width to 40% */
+    transition: background-color 0.3s; /* Add transition for smooth color change */
+    animation: rainbowborder 4s infinite
+}
+@keyframes rainbowborder {
+    0% {
+        border-color: #FE9696; /* Red */
+    }
+    16% {
+        border-color: #FEC06D; /* Orange */
+    }
+    33% {
+        border-color: #FEF2A5; /* Yellow */
+    }
+    50% {
+        border-color: #96F7A3; /* Green */
+    }
+    66% {
+        border-color: #96EAF7; /* Blue */
+    }
+    83% {
+        border-color: #BD96F7; /* Indigo */
+    }
+    100% {
+        border-color: #F796F1; /* Violet */
+    }
+}
+
+
+.comment-input {
+    margin-right: 10px; /* Add margin-right to separate the input fields */
+}
+
+.points-input {
+    margin-left: 10px; /* Add margin-left to separate the input fields */
+}
+
+.form-group .add-button {
+    width: 50%;
+    height: 30px;
+    background: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 20px;
+    font-size: 14px;
+    color: black;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Add box-shadow to the transition */
+    margin-top: 10px;
+    margin-left: 20px;
+    animation: rainbowBackground 4s infinite; /* Apply synchronized rainbow animation on hover */
+}
+
+.form-group .add-button:hover {
+    background-color: #EEDCCB !important;
+}
+
+@keyframes rainbowBackground {
+    0% {
+        background-color: #FE9696; /* Red */
+    }
+    16% {
+        background-color: #FEC06D; /* Orange */
+    }
+    33% {
+        background-color: #FEF2A5; /* Yellow */
+    }
+    50% {
+        background-color: #96F7A3; /* Green */
+    }
+    66% {
+        background-color: #96EAF7; /* Blue */
+    }
+    83% {
+        background-color: #BD96F7; /* Indigo */
+    }
+    100% {
+        background-color: #F796F1; /* Violet */
+    }
+}
+
+
+
+
+.form-group input[name="points"] {
+    margin-top: 10px; /* Add margin-top */
+    margin-left: 5px; /* Add margin-left */
+}
+
+
+
+
