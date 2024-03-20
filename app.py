@@ -6,8 +6,9 @@ sys.path.append("controllers/")
 from student import Student
 from teacher import Teacher
 from search_students import SearchStudents
-from login import login
+from login import Login
 from addToStudent import AddToStudent
+from leaderboardBackend import Leaderboard
 
 app = Flask(__name__)
 
@@ -125,23 +126,70 @@ def student_others(studentid):
 
 #student login
 
-@app.route('/loginUI', methods=['GET', 'POST'])
+@app.route('/SloginUI', methods=['GET', 'POST'])
 def student_Login():
     if request.method == "GET":
-        return render_template("loginUI.html")
+        return render_template("SloginUI.html")
     else:
         username = request.form['Username']
         password = request.form['Password']
         print(username, password)
+        username = "'" + username + "'"
+        password = "'" + password + "'"
 
         login = Login()
 
         check = login.studentCheckLogin(username, password)
         if check == True:
             id = login.studentLogin(username, password)
-            return redirect("/dashboard")
+            id = str(id[1:2])
+            return redirect("../templates/dashboard", id= id)
         else:
-            return 'incorrect username or password'
+            return render_template("SLoginUI", msg = "Incorrect Username or Password")
+
+#teacherLogin
+@app.route('/TloginUI', methods=['GET', 'POST'])
+def teacher_Login():
+    if request.method == "GET":
+        return render_template("TloginUI.html")
+    else:
+        username = request.form['Username']
+        password = request.form['Password']
+        print(username, password)
+        username = "'" + username + "'"
+        password = "'" + password + "'"
+
+        login = Login()
+
+        check = login.teacherCheckLogin(username, password)
+        if check == True:
+            id = login.teacherLogin(username, password)
+            id = str(id[1:2])
+            return redirect("../templates/dashboard", id= id)
+        else:
+            return render_template("TLoginUI", msg = "Incorrect Username or Password")
+
+#parentlogin
+@app.route('/PloginUI', methods=['GET', 'POST'])
+def parent_Login():
+    if request.method == "GET":
+        return render_template("PloginUI.html")
+    else:
+        username = request.form['Username']
+        password = request.form['Password']
+        print(username, password)
+        username = "'" + username + "'"
+        password = "'" + password + "'"
+
+        login = Login()
+
+        check = login.parentCheckLogin(username, password)
+        if check == True:
+            id = login.teacherLogin(username, password)
+            id = str(id[1:2])
+            return redirect("../templates/dashboard", id= id)
+        else:
+            return render_template("PLoginUI", msg = "Incorrect Username or Password")
 
 #leaderboard
 @app.route('/leaderboard', methods=['GET', 'POST'])
