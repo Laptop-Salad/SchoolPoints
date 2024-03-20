@@ -1,5 +1,5 @@
 import sqlite3
-from sqlite3 import Errorr
+from sqlite3 import Error
 
 class Login:
 
