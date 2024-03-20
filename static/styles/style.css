@@ -7,6 +7,7 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 
 }
+
 header::after {
     content: '';
     display: table;
@@ -20,7 +21,12 @@ header::after {
 logo {
     float: left;
     padding: 0px 0;
+    font-family: "Felipa", serif;
+    font-weight: 400;
+    font-style: normal;
+
 }
+
 
 
 nav {
