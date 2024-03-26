@@ -194,7 +194,7 @@ def parent_Login():
             return render_template("PLoginUI", msg = "Incorrect Username or Password")
 
 #leaderboard
-@app.route('/leaderboard', methods=['GET', 'POST'])
+@app.route('/leaderboard', methods=['GET'])
 def leaderboardcalc():
     losingTotal = 0
     winningTotal = 0
@@ -219,11 +219,13 @@ def leaderboardcalc():
         else:
             losingHouse = "Blue"
             losingTotal = blueTotal
-            winningTotal =redTotal
+            winningTotal = redTotal
 
-        return render_template("leaderboard.html", winningTotal = winningTotal, winners = winningHouse, losingTotal = losingTotal, losers = losingHouse)
-    else:
-        return "<h1> POST </h1>"
+        return render_template("leaderboard.html", 
+            winningTotal = winningTotal, 
+            winningHouse = winningHouse, 
+            losingTotal = losingTotal, 
+            losingHouse = losingHouse)
 
 if __name__ == '__main__':
    app.run()
