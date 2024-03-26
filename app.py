@@ -45,10 +45,10 @@ def search_students(term):
 @app.route("/student/<studentid>", methods=['GET'])
 def student(studentid):
     student = Student()
-    attendance = student.get_attendance(studentid)
-    behavior = student.get_behavior(studentid)
-    grades = student.get_grades(studentid)
-    others = student.get_others(studentid)
+    attendance = student.get_points(studentid, "attendance")
+    behavior = student.get_points(studentid, "behavior")
+    grades = student.get_points(studentid, "grades")
+    others = student.get_points(studentid, "others")
 
 
     return render_template("dashboard.html", student_num = studentid,
@@ -62,7 +62,7 @@ def student(studentid):
 def student_behaviour(studentid):
     if request.method == "GET":
         student = Student()
-        behaviors = student.get_behavior(studentid)
+        behaviors = student.get_points(studentid, "behavior")
         return render_template("behavior.html", behaviors=behaviors, student_num = studentid)
     else:
         comment = request.form.get("comment")
@@ -78,7 +78,7 @@ def student_behaviour(studentid):
 def student_attendance(studentid):
     if request.method == "GET":
         student = Student()
-        attendance = student.get_attendance(studentid)
+        attendance = student.get_points(studentid, "attendance")
         return render_template("attendance.html", attendance=attendance, student_num = studentid)
     else:
         comment = request.form.get("comment")
@@ -94,7 +94,7 @@ def student_attendance(studentid):
 def student_grades(studentid):
     if request.method == "GET":
         student = Student()
-        grades = student.get_grades(studentid)
+        grades = student.get_points(studentid, "grades")
         return render_template("grades.html", grades=grades, student_num = studentid)
     else:
         comment = request.form.get("comment")
@@ -110,7 +110,7 @@ def student_grades(studentid):
 def student_others(studentid):
     if request.method == "GET":
         student = Student()
-        others = student.get_others(studentid)
+        others = student.get_points(studentid, "others")
         return render_template("others.html", others=others, student_num = studentid)
     else:
         comment = request.form.get("comment")
