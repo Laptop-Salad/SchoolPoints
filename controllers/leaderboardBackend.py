@@ -27,6 +27,9 @@ class Leaderboard:
 
     def getRedTotal(self):
         return self.getHouseTotal("Red Rabbits")  
+    
+    def getTop3Students(self):
+        # Note: This is school-wide
 
     def winningHouse(self, redTotal, blueTotal):
         conn = sqlite3.connect("school.db")

@@ -10,19 +10,24 @@
 
 {% include "header.html" %}
 
-<!-- winningTotal, winningHouse, losingTotal, losingHouse-->
 <h1>Leaderboard</h1>
 
+<h2>House Leaderboard</h2>
+
 <div>
+    <!-- for now just pretend like each <div> is a row -->
     <div>
-        <h2>{{ winningHouse }}</h2>
+        <h3>{{ winningHouse }}</h3>
         <p>{{ winningTotal }}</p>
     </div>
     <div>
-        <h2>{{ losingHouse }}</h2>
+        <h3>{{ losingHouse }}</h3>
         <p>{{ losingTotal }}</p>
     </div>
 </div>
+
+<h2>Student Leaderboard</h2>
+
 
 
 {% include "footer.html" %}
