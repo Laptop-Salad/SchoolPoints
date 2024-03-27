@@ -1,0 +1,385 @@
+body {
+    margin: 0;
+
+}
+
+body {
+    background: url('../images/photo3.jpg') no-repeat;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+header {
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+}
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+logo {
+    float: left;
+    padding: 0px 0;
+    font-family: "Felipa", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+nav {
+    float: right;
+}
+nav ul {
+    margin: 4px;
+    padding: 5px;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 0px;
+    position: relative;
+}
+
+nav a {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 5px 0px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+}
+
+nav a:hover {
+    background-color: #FBC528;
+    box-shadow: 0 0 20px 10px rgb(251, 197, 40); /* Increase blur effect */
+}
+nav li.active a {
+    position: relative; /* Ensure positioning works properly */
+    color: grey; /* Set the text color for the active link */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+nav li.active a::after {
+    content: ''; /* Create the underline */
+    position: absolute; /* Position the underline */
+    left: 0;
+    bottom: 14px; /* Adjust the distance of the underline from the text */
+    width: 100%; /* Make the underline span the entire width */
+    border-bottom: 2px solid lightcoral; /* Style the underline */
+}
+nav li.active a:hover {
+    background-color: transparent;
+}
+
+
+.drop1 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop1cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+.drop1cont {
+    left: 47%; /* Adjust as needed */
+    top: 100%; /* Position it below the parent element */
+    transform: translateX(-50%); /* Center the dropdown horizontally */
+}
+.drop2cont {
+    left: 47%; /* Adjust as needed */
+    top: 100%; /* Position it below the parent element */
+    transform: translateX(-50%); /* Center the dropdown horizontally */
+}
+
+.drop1cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop1cont a:hover {
+
+    background-color: #FBC528;
+    box-shadow: none; /* Reset box-shadow for dropdown items */
+}
+
+.drop1:hover .drop1cont {
+    display: block;
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+}
+
+.drop2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop2cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop2cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop2cont a:hover {
+
+    background-color: #FBC528;
+    box-shadow: none; /* Reset box-shadow for dropdown items */
+}
+
+.drop2:hover .drop2cont {
+    display: block;
+    border-radius: 10px; /* Add border-radius to create rounded corners */
+}
+
+.drop2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.drop2cont {
+    float: right;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 190px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+.drop2cont a {
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+
+.drop2cont a:hover {
+
+    background-color: #FBC528;
+}
+
+.drop2:hover .drop2cont {
+    display: block;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    text-align: center;
+}
+
+
+
+/* Add these styles to your existing CSS file */
+
+.leaderboard-student-leaderboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; /* Adjust as needed */
+}
+
+.leaderboard-house-leaderboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; /* Adjust as needed */
+}
+
+.leaderboard-house-leaderboard .house-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leaderboard-house-leaderboard .house {
+height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.leaderboard-house-leaderboard .house h3 {
+    margin-right: 20px;
+}
+
+.leaderboard-house-leaderboard .house p {
+    margin: 5px 0; /* Adjust margin as needed */
+}
+
+
+/* Add these styles to your existing CSS file */
+
+@keyframes rainbow {
+    0% {
+        color: #FE9696;
+    }
+    16% {
+        color: #FEC06D;
+    }
+    33% {
+        color: #FEF2A5;
+    }
+    50% {
+        color: #96F7A3;
+    }
+    66% {
+        color: #96EAF7;
+    }
+    83% {
+        color: #BD96F7;
+    }
+    100% {
+        color: #F796F1;
+    }
+}
+
+.leaderboard-student-leaderboard h2,
+.leaderboard-house-leaderboard h2 {
+    animation: rainbow 4s infinite; /* Apply animation to the h2 elements */
+    -webkit-text-stroke: 1px black; /* Add white outline to text */
+}
+
+
+/* Add these styles to your existing CSS file */
+
+.leaderboard-student-leaderboard h2,
+.leaderboard-house-leaderboard h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.leaderboard-student-leaderboard h2::before,
+.leaderboard-house-leaderboard h2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%; /* Set the width to 100% to match the width of the text */
+    height: 100%; /* Set the height to 100% to match the height of the text */
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    padding: 0 10px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+/* Add these styles to your existing CSS file */
+
+table {
+    border: 2px solid rgba(255, 255, 255, .2); /* Add border */
+    border-radius: 10px; /* Add border-radius */
+    padding: 20px; /* Add padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); /* Add box shadow */
+    background-color: #EEDCCBFF;
+    backdrop-filter: blur(20px);
+}
+.house-info{
+    border: 2px solid rgba(255, 255, 255, .2); /* Add border */
+    border-radius: 10px; /* Add border-radius */
+    padding: 20px; /* Add padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); /* Add box shadow */
+    background:  transparent;
+    backdrop-filter: blur(20px);
+    animation: rainbow-border 4s infinite;
+    width: 17.5%;
+    height: 20%;
+}
+
+@keyframes rainbow-border {
+    0% {
+        border-color: #FE9696;
+    }
+    16% {
+        border-color: #FEC06D;
+    }
+    33% {
+        border-color: #FEF2A5;
+    }
+    50% {
+        border-color: #96F7A3;
+    }
+    66% {
+        border-color: #96EAF7;
+    }
+    83% {
+        border-color: #BD96F7;
+    }
+    100% {
+        border-color: #F796F1;
+    }
+}
+
+table {
+    border-radius: 10px; /* Add border-radius */
+    padding: 20px; /* Add padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); /* Add box shadow */
+    background:  transparent;
+    backdrop-filter: blur(20px);
+    animation: rainbow-border 4s infinite; /* Apply animation to the table borders */
+}
+
+/* Apply the rainbow effect only to table th and table td */
+table th,
+table td {
+    text-align: center;
+    border: 2px solid transparent; /* Set initial border color to transparent */
+}
+
+/* Add these styles to your existing CSS file */
+
+

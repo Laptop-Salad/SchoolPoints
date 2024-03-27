@@ -3,64 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Leaderboard</title>
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/Lstyle.css') }}">
 </head>
 <body>
 
 {% include "header.html" %}
 
-<h1>Leaderboard</h1>
+<div class="leaderboards-container">
 
-<h2>House Leaderboard</h2>
+    <div class="leaderboard-student-leaderboard">
+        <h2>Student Leaderboard</h2>
+        <!-- Table for Student Leaderboard -->
+        <table>
+            <tr>
+                <th>Position in school</th>
+                <th>Student name</th>
+                <th>Total points</th>
+            </tr>
 
-<!-- Note: Doesnt have to be in divs or table, whatever is easiest -->
-
-<div>
-    <!-- for now just pretend like each <div> is a row, this is what it will look like anyway when
-        it is changed to load all houses -->
-    <div>
-        <h3>{{ winningHouse }}</h3>
-        <p>{{ winningTotal }}</p>
+            <tr>
+                <td>1</td>
+                <td>Derrick</td>
+                <td>280</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Headphones</td>
+                <td>270</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Samantha Sandwich</td>
+                <td>190</td>
+            </tr>
+        </table>
     </div>
-    <div>
-        <h3>{{ losingHouse }}</h3>
-        <p>{{ losingTotal }}</p>
+
+    <div class="leaderboard-house-leaderboard">
+        <h2>House Leaderboard</h2>
+        <!-- House Leaderboard -->
+        <div class="house-info">
+            <div class="house">
+                <h3>{{ winningHouse }}</h3>
+                <p>{{ winningTotal }}</p>
+            </div>
+            <div class="house">
+                <h3>{{ losingHouse }}</h3>
+                <p>{{ losingTotal }}</p>
+            </div>
+        </div>
     </div>
+
 </div>
-
-<h2>Student Leaderboard</h2>
-
-<!-- Also just pretend for now. This is what the data will look like when it actually works -->
-
-<table>
-    <tr>
-        <th>Position in school</th>
-        <th>Student name</th>
-        <th>Total points</th>
-    </tr>
-
-    <tr>
-        <td>1</td>
-        <td>Derrick</td>
-        <td>280</td>
-    </tr>
-
-    <tr>
-        <td>2</td>
-        <td>Headphones</td>
-        <td>270</td>
-    </tr>
-
-    <tr>
-        <td>3</td>
-        <td>Samantha Sandwich</td>
-        <td>190</td>
-    </tr>
-</table>
-
 
 {% include "footer.html" %}
 
 </body>
 </html>
+
+
+
