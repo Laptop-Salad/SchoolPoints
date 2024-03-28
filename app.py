@@ -126,11 +126,9 @@ def student_others(studentid):
 
 #student login
 
-@app.route('/SloginUI', methods=['GET', 'POST'])
+@app.route('/studentlogin', methods=['GET', 'POST'])
 def student_Login():
-    if request.method == "GET":
-        return render_template("SloginUI.html")
-    else:
+    if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
         print(username, password)
@@ -144,17 +142,20 @@ def student_Login():
         if check == True:
             #if the username and password are correct get the id
             id = login.studentLogin(username, password)
-            id = str(id[1:2])
-            return redirect("../templates/dashboard", id= id)
+            id = str(id)
+            id = id[2:3]
+            redirecturl = "/student/" + id
+            return redirect(redirecturl)
         else:
-            return render_template("SLoginUI", msg = "Incorrect Username or Password")
+            return render_template("SLoginUI.html", msg = "Your username or password is incorrect")
+    else:
+        return render_template("SLoginUI.html")
+
 
 #teacherLogin
-@app.route('/TloginUI', methods=['GET', 'POST'])
+@app.route('/teacherlogin', methods=['GET', 'POST'])
 def teacher_Login():
-    if request.method == "GET":
-        return render_template("TloginUI.html")
-    else:
+    if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
         print(username, password)
@@ -163,20 +164,24 @@ def teacher_Login():
 
         login = Login()
 
+        #check to see if username and password are correct
         check = login.teacherCheckLogin(username, password)
         if check == True:
+            #if the username and password are correct get the id
             id = login.teacherLogin(username, password)
-            id = str(id[1:2])
-            return redirect("../templates/dashboard", id= id)
+            id = str(id)
+            id = id[2:3]
+            redirecturl = "/teacher/" + id
+            return redirect(redirecturl)
         else:
-            return render_template("TLoginUI", msg = "Incorrect Username or Password")
+            return render_template("TLoginUI.html", msg = "Your username or password is incorrect")
+    else:
+        return render_template("TLoginUI.html")
 
 #parentlogin
-@app.route('/PloginUI', methods=['GET', 'POST'])
+@app.route('/parentlogin', methods=['GET', 'POST'])
 def parent_Login():
-    if request.method == "GET":
-        return render_template("PloginUI.html")
-    else:
+    if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
         print(username, password)
@@ -185,13 +190,19 @@ def parent_Login():
 
         login = Login()
 
+        #check to see if username and password are correct
         check = login.parentCheckLogin(username, password)
         if check == True:
-            id = login.teacherLogin(username, password)
-            id = str(id[1:2])
-            return redirect("../templates/dashboard", id= id)
+            #if the username and password are correct get the id
+            id = login.parentLogin(username, password)
+            id = str(id)
+            id = id[2:3]
+            redirecturl = "/student/" + id
+            return redirect(redirecturl)
         else:
-            return render_template("PLoginUI", msg = "Incorrect Username or Password")
+            return render_template("PLoginUI.html", msg = "Your username or password is incorrect")
+    else:
+        return render_template("PLoginUI.html")
 
 #leaderboard
 @app.route('/leaderboard', methods=['GET'])
