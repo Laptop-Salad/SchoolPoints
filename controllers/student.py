@@ -3,6 +3,16 @@ import sys
 from sqlite3 import Error
 
 class Student:
+    def get_student_name(self, studentid):
+        conn = sqlite3.connect("school.db")
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT username FROM students WHERE id = '" + str(studentid) + "';")
+        res = cursor.fetchall()
+        conn.close()
+
+        return res[0][0]
+
     def get_points(self, studentid, type):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
@@ -43,6 +53,8 @@ class Student:
             result = cursor.fetchall()
 
             teachers[teacher] = result[0][0] # Get first item from first row
+
+        conn.close()
         
         return {
             "points": points,
@@ -50,9 +62,6 @@ class Student:
             "teachers": teachers,
             "totalPoints": totalPoints
         }
-
-        conn.commit()
-        conn.close()
 
     def get_summary(self, studentid):
         behavior = self.get_points(studentid, "behavior")["totalPoints"]

@@ -5,42 +5,58 @@ sys.path.append("controllers/")
 from student import Student
 
 class Leaderboard:
-    def getHouseTotal(self, house):
+    def getHouseTotals(self):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        houseTotal = 0
+
+        cursor.execute("SELECT DISTINCT housename FROM houses")
+        houses = cursor.fetchall()
         student = Student()
+        house_names = []
+        house_totals = []
+        top_three_students = ["", "", ""]
+        top_three_points = [0, 0, 0] # index 0 is the top student
 
-        #find every student that is in the blue house
-        cursor.execute("SELECT studentid FROM houses WHERE housename = '" + house + "'")
-        houseStudents = cursor.fetchall()
+        for house in houses:
+            # Every student in house
+            cursor.execute("SELECT studentid FROM houses WHERE housename = '" + house[0] + "'")
+            house_students = cursor.fetchall()
+            house_total = 0
 
-        # for each student get their total points
-        for studentid in houseStudents:
-            houseTotal += student.get_summary(studentid[0])["total_points"]
+            # for each student get their total points
+            for studentid in house_students:
+                curr_total = student.get_summary(studentid[0])["total_points"]
+                house_total += curr_total
 
-        conn.close()    
-        return houseTotal
+                # See if the current students score is greater than any of the below
+                for points in range(0, len(top_three_points)):
+                    if (curr_total > top_three_points[points]):
+                        top_three_points.insert(0, curr_total)
+                        top_three_points.pop(-1)
+                        top_three_students.insert(0, student.get_student_name(studentid[0]))
+                        top_three_students.pop(-1)
+                        break
+            
+            house_names.append(house[0])
+            house_totals.append(house_total)
 
-    def getBlueTotal(self):
-        return self.getHouseTotal("Blue")  
+        # Use bubble sort to sort houses
+        houses = len(house_names)
+        for i in range(houses-1):
+            swapped = False
 
-    def getRedTotal(self):
-        return self.getHouseTotal("Red Rabbits")  
-    
-    def getTop3Students(self):
-        # Note: This is school-wide
-        pass
+            for j in range(0, houses-i-1):
+                if house_totals[j] < house_totals[j + 1]:
+                    swapped = True
+                    house_totals[j], house_totals[j + 1] = house_totals[j + 1], house_totals[j]
+                    house_names[j], house_names[j + 1] = house_names[j + 1], house_names[j]
 
-    def winningHouse(self, redTotal, blueTotal):
-        conn = sqlite3.connect("school.db")
-        cursor = conn.cursor()
-
-        #find out which house has the most points
-        if redTotal > blueTotal:
-            winner = "Red Rabbits"
-        else:
-            winner = "blue"
-
-        conn.close()
-        return winner
+            if not swapped:
+                break
+        
+        return {
+            "house_names": house_names,
+            "house_totals": house_totals,
+            "top_students_names": top_three_students,
+            "top_students_points": top_three_points
+        }

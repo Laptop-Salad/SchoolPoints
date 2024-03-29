@@ -207,36 +207,16 @@ def parent_Login():
 #leaderboard
 @app.route('/leaderboard', methods=['GET'])
 def leaderboardcalc():
-    losingTotal = 0
-    winningTotal = 0
-    winningHouse = "Winning house"
-    losingHouse = "losing house"
     if request.method == "GET":
         leaderboard = Leaderboard()
-        #get the total points for the blue house
-        blueTotal = leaderboard.getBlueTotal()
 
-        #get the total points for the red house
-        redTotal = leaderboard.getRedTotal()
+        leaderboard_res = leaderboard.getHouseTotals()
 
-        #calc which of the houses has the most points
-        winningHouse = leaderboard.winningHouse(redTotal, blueTotal)
-
-        #set the winning/losing house and points to the right varible
-        if winningHouse == "blue":
-            losingHouse = "Red Rabbits"
-            losingTotal = redTotal
-            winningTotal = blueTotal
-        else:
-            losingHouse = "Blue"
-            losingTotal = blueTotal
-            winningTotal = redTotal
-
-        return render_template("leaderboard.html", 
-            winningTotal = winningTotal, 
-            winningHouse = winningHouse, 
-            losingTotal = losingTotal, 
-            losingHouse = losingHouse)
+        return render_template("leaderboard.html",
+        house_names = leaderboard_res["house_names"],
+        house_totals = leaderboard_res["house_totals"],
+        top_students_names = leaderboard_res["top_students_names"],
+        top_students_points = leaderboard_res["top_students_points"])
 
 if __name__ == '__main__':
    app.run()

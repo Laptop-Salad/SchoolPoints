@@ -21,21 +21,13 @@
                 <th>Total points</th>
             </tr>
 
-            <tr>
-                <td>1</td>
-                <td>Derrick</td>
-                <td>280</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Headphones</td>
-                <td>270</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Samantha Sandwich</td>
-                <td>190</td>
-            </tr>
+            {% for pos in range(0, 3) %}
+                <tr>
+                    <th>{{ pos }}</th>
+                    <th>{{ top_students_names[pos] }}</th>
+                    <th>{{ top_students_points[pos] }}</th>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 
@@ -52,6 +44,13 @@
                 <p>{{ losingTotal }}</p>
             </div>
         </div>
+
+        {% for house in range(0, house_names|length) %}
+            <div class="house">
+                <h3>{{ house_names[house] }}</h3>
+                <p>{{ house_totals[house] }}</p>
+            </div>
+        {% endfor %}
     </div>
 
 </div>
