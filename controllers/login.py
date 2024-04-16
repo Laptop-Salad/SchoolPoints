@@ -64,13 +64,17 @@ class Login:
         check = cursor.fetchall()
         return check
 
-    def checkPasswordStudent(self, username, password):
+    def checkPasswordStudent(self, id):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT resetpassword FROM students WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT resetpassword FROM students WHERE id = %s" %(id))
         check = cursor.fetchall()
+        check = str(check)
+        check = check[2:3]
         if check == 1:
             reset = "true"
         else:
             reset = "false"
-        return reset
+        return check
+
+
