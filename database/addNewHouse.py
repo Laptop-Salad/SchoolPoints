@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 
 
-conn = sqlite3.connect("school.db")
+conn = sqlite3.connect("../school.db")
 
 
 cursor = conn.cursor()
@@ -30,6 +30,11 @@ cursor = conn.cursor()
 #cursor.execute("""INSERT INTO houses (studentid, housename)
  #   VALUES (2, "Red Rabbits")"""
   #             )
+
+#add new field
+#cursor.execute(("ALTER TABLE students ADD resetpassword int"))
+
+cursor.execute("UPDATE students SET resetpassword = 1")
 
 print("Records added to Database")
 conn.commit()

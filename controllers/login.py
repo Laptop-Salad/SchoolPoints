@@ -63,3 +63,14 @@ class Login:
         cursor.execute("SELECT id FROM parents WHERE username = %s AND Password = %s" %(username, password))
         check = cursor.fetchall()
         return check
+
+    def checkPasswordStudent(self, username, password):
+        conn = sqlite3.connect("school.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT resetpassword FROM students WHERE username = %s AND Password = %s" %(username, password))
+        check = cursor.fetchall()
+        if check == 1:
+            reset = "true"
+        else:
+            reset = "false"
+        return reset

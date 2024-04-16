@@ -9,6 +9,7 @@ from search_students import SearchStudents
 from login import Login
 from addToStudent import AddToStudent
 from leaderboardBackend import Leaderboard
+from resetPassword import Reset
 
 app = Flask(__name__)
 
@@ -144,7 +145,12 @@ def student_Login():
             id = login.studentLogin(username, password)
             id = str(id)
             id = id[2:3]
-            redirecturl = "/student/" + id
+            #check to see if they need to reset their password
+            reset = login.checkPasswordStudent(username, password)
+            if reset == "true":
+                redirecturl = "/student/"+ id +"/changepassword"
+            elif reset == "false":
+                redirecturl = "/student/" + id
             return redirect(redirecturl)
         else:
             return render_template("SLoginUI.html", msg = "Your username or password is incorrect")
@@ -217,6 +223,22 @@ def leaderboardcalc():
         house_totals = leaderboard_res["house_totals"],
         top_students_names = leaderboard_res["top_students_names"],
         top_students_points = leaderboard_res["top_students_points"])
+
+@app.route("/student/<studentid>/changepassword", methods=['GET', 'POST'])
+def changepasswordSX(studentid):
+    if request.method == "POST":
+        password1 = request.form['password1']
+        password2 = request.form['password2']
+        if password1 == password2:
+            reset = Reset
+            reset.resetPasswordS(studentid, password1)
+            redirecturl = "/student/" + studentid
+            return redirect(redirecturl)
+        else:
+            return render_template("LoginPassword.html", msg = "Passwords do not Match")
+    else:
+        return render_template("LoginPassword.html")
+
 
 if __name__ == '__main__':
    app.run()
