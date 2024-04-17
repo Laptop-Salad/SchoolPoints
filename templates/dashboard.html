@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-</head>
-<body>
-
-{% include "components/header.html" %}
+{% with title=title %}
+    {% include "components/header.html" %}
+{% endwith %}
 
 <div class="containerd">
     <div class="total-points">
         <div>Total points</div>
         <div class="points">{{ behavior.totalPoints + grades.totalPoints
-            + attendance.totalPoints + others.totalPoints }}</div> <!-- New text -->
+            + attendance.totalPoints + others.totalPoints }}</div>
     </div>
     <div class="top-squares">
 
@@ -40,6 +32,3 @@
 </div>
 
 {% include "components/footer.html" %}
-
-</body>
-</html>

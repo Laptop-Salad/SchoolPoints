@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 
 import sys
 sys.path.append("controllers/")
@@ -12,14 +12,16 @@ from leaderboardBackend import Leaderboard
 from resetPassword import Reset
 
 app = Flask(__name__)
+app.secret_key = 'BAD_SECRET_KEY'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    return "<h1>Login</h1>"
+        return render_template("index.html", title="Logged Out")
 
 @app.route("/logout", methods=['GET'])
 def logout():
-    return "<h1>Logout</h1>"
+    session.clear()
+    return "<h1>Successfully Logged Out</h1>"
 
 @app.route("/changepassword", methods=['GET', 'PUT'])
 def changepassword():
@@ -32,7 +34,7 @@ def teacher(teacherid):
         teacher = Teacher()
         teacher_name = teacher.dashboard_data(teacherid)
         students = teacher.get_all_students()
-        return render_template("teacherDashboard.html", teacher_name=teacher_name, students=students)
+        return render_template("teacherDashboard.html", title="Teacher Dashboard", teacher_name=teacher_name, students=students)
 
 # Search for students
 @app.route("/searchstudents/<term>", methods=['GET'])
@@ -56,7 +58,8 @@ def student(studentid):
                            attendance=attendance,
                            behavior=behavior,
                            grades=grades,
-                           others=others)
+                           others=others,
+                           title="Student Dashboard")
 
 # Behaviour
 @app.route("/student/<studentid>/behaviour", methods=['GET', 'POST'])
@@ -64,7 +67,7 @@ def student_behaviour(studentid):
     if request.method == "GET":
         student = Student()
         behaviors = student.get_points(studentid, "behavior")
-        return render_template("behavior.html", behaviors=behaviors, student_num = studentid)
+        return render_template("behavior.html", title="Student behavior", behaviors=behaviors, student_num = studentid)
     else:
         comment = request.form.get("comment")
         points = request.form.get("points")
@@ -80,7 +83,7 @@ def student_attendance(studentid):
     if request.method == "GET":
         student = Student()
         attendance = student.get_points(studentid, "attendance")
-        return render_template("attendance.html", attendance=attendance, student_num = studentid)
+        return render_template("attendance.html", title="Student attendance",  attendance=attendance, student_num = studentid)
     else:
         comment = request.form.get("comment")
         points = request.form.get("points")
@@ -96,7 +99,7 @@ def student_grades(studentid):
     if request.method == "GET":
         student = Student()
         grades = student.get_points(studentid, "grades")
-        return render_template("grades.html", grades=grades, student_num = studentid)
+        return render_template("grades.html", title="Student Grades", grades=grades, student_num = studentid)
     else:
         comment = request.form.get("comment")
         points = request.form.get("points")
@@ -112,7 +115,7 @@ def student_others(studentid):
     if request.method == "GET":
         student = Student()
         others = student.get_points(studentid, "others")
-        return render_template("others.html", others=others, student_num = studentid)
+        return render_template("others.html", title="Student Others", others=others, student_num = studentid)
     else:
         comment = request.form.get("comment")
         points = request.form.get("points")
@@ -132,9 +135,6 @@ def student_Login():
     if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
-        print(username, password)
-        username = "'" + username + "'"
-        password = "'" + password + "'"
 
         login = Login()
 
@@ -145,6 +145,12 @@ def student_Login():
             id = login.studentLogin(username, password)
             id = str(id)
             id = id[2:3]
+
+            # start session
+            session["username"] = username
+            session["userid"] = id
+            session["type"] = "student"
+
             #check to see if they need to reset their password
             redirecturl = "/student/"+ id +"/changepassword"
             reset = login.checkPasswordStudent(id)
@@ -153,9 +159,9 @@ def student_Login():
 
             return redirect(redirecturl)
         else:
-            return render_template("SLoginUI.html", msg = "Your username or password is incorrect")
+            return render_template("SLoginUI.html", title="Student Login", msg = "Your username or password is incorrect")
     else:
-        return render_template("SLoginUI.html")
+        return render_template("SLoginUI.html", title="Student Login")
 
 
 #teacherLogin
@@ -164,15 +170,16 @@ def teacher_Login():
     if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
-        print(username, password)
-        username = "'" + username + "'"
-        password = "'" + password + "'"
-
         login = Login()
 
         #check to see if username and password are correct
         check = login.teacherCheckLogin(username, password)
         if check == True:
+            # start session
+            session["username"] = username
+            session["userid"] = id
+            session["type"] = "teacher"
+
             #if the username and password are correct get the id
             id = login.teacherLogin(username, password)
             id = str(id)
@@ -180,9 +187,9 @@ def teacher_Login():
             redirecturl = "/teacher/" + id
             return redirect(redirecturl)
         else:
-            return render_template("TLoginUI.html", msg = "Your username or password is incorrect")
+            return render_template("TLoginUI.html", title="Teacher Login", msg = "Your username or password is incorrect")
     else:
-        return render_template("TLoginUI.html")
+        return render_template("TLoginUI.html", title="Teacher Login")
 
 #parentlogin
 @app.route('/parentlogin', methods=['GET', 'POST'])
@@ -190,9 +197,6 @@ def parent_Login():
     if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
-        print(username, password)
-        username = "'" + username + "'"
-        password = "'" + password + "'"
 
         login = Login()
 
@@ -203,12 +207,17 @@ def parent_Login():
             id = login.parentLogin(username, password)
             id = str(id)
             id = id[2:3]
+
+            session["username"] = username
+            session["userid"] = id
+            session["type"] = "parent"
+
             redirecturl = "/student/" + id
             return redirect(redirecturl)
         else:
-            return render_template("PLoginUI.html", msg = "Your username or password is incorrect")
+            return render_template("PLoginUI.html", title="Parent Login", msg = "Your username or password is incorrect")
     else:
-        return render_template("PLoginUI.html")
+        return render_template("PLoginUI.html", title="Parent Login")
 
 #leaderboard
 @app.route('/leaderboard', methods=['GET'])
@@ -238,7 +247,7 @@ def changepasswordStudent(studentid):
             redirecturl = "/student/" + studentid + "/changepassword"
             return redirect(redirecturl)
     elif request.method == "GET":
-        return render_template("LoginPassword.html")
+        return render_template("LoginPassword.html", title="Change Psassword")
 
 
 if __name__ == '__main__':

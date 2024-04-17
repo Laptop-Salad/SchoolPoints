@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Leaderboard</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/Lstyle.css') }}">
-</head>
-<body>
-
-{% include "components/header.html" %}
+{% with title=title, leaderboard='true' %}
+    {% include "components/header.html" %}
+{% endwith %}
 
 <div class="leaderboards-container">
 

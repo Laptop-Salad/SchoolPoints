@@ -8,7 +8,7 @@ class Login:
         cursor = conn.cursor()
         confirmLogin = False
 
-        cursor.execute("SELECT id FROM students WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT id FROM students WHERE username = '%s' AND Password = '%s'" %(username, password))
         check = cursor.fetchall()
 
         if check:
@@ -18,7 +18,7 @@ class Login:
     def studentLogin(self,username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM students WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT id FROM students WHERE username = '%s' AND Password = '%s'" %(username, password))
         check = cursor.fetchall()
         return check
 
@@ -29,7 +29,7 @@ class Login:
         cursor = conn.cursor()
         confirmLogin = False
 
-        cursor.execute("SELECT id FROM teachers WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT id FROM teachers WHERE username = '%s' AND Password = '%s'" %(username, password))
         check = cursor.fetchall()
 
         if check:
@@ -39,7 +39,7 @@ class Login:
     def teacherLogin(sself, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM teachers WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT id FROM teachers WHERE username = '%s' AND Password = '%s'" %(username, password))
         check = cursor.fetchall()
         return check
 #
@@ -50,7 +50,7 @@ class Login:
         cursor = conn.cursor()
         confirmLogin = False
 
-        cursor.execute("SELECT id FROM parents WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT id FROM parents WHERE username = '%s' AND Password = '%s'" %(username, password))
         check = cursor.fetchall()
 
         if check:
@@ -60,14 +60,14 @@ class Login:
     def parentLogin(self, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM parents WHERE username = %s AND Password = %s" %(username, password))
+        cursor.execute("SELECT id FROM parents WHERE username = '%s' AND Password = '%s'" %(username, password))
         check = cursor.fetchall()
         return check
 
     def checkPasswordStudent(self, id):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT resetpassword FROM students WHERE id = %s" %(id))
+        cursor.execute("SELECT resetpassword FROM students WHERE id = '%s'" %(id))
         check = cursor.fetchall()
         check = str(check)
         check = check[2:3]

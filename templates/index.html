@@ -1,0 +1,14 @@
+{% with title=title, nobar='true' %}
+    {% include "components/header.html" %}
+{% endwith %}
+
+<div class="wrapper">
+    <form action="">
+        <div class ="text"> <h1> Welcome to ACAS </h1></div>
+        <a href="/studentlogin" class="btn1">Student Login</a>
+        <a href="/teacherlogin" class="btn1">Teacher Login</a>
+        <a href="/parentlogin" class="btn1">Parent Login</a>
+    </form>
+</div>
+
+{% include "components/footer.html" %}

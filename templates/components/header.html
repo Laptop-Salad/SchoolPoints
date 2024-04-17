@@ -1,25 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>ACAS - {{ title }}</title>
+    {% else %}
+        <title>ACAS</title>
+    {% endif %}
+
+    <!-- Stylesheets -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    
+    {% if teacher %}
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/Tstyle.css') }}">
+    {% elif leaderboard %}
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/Lstyle.css') }}">
+    {% elif login %}
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+    {% endif %}
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Felipa&family=Italianno&family=Pinyon+Script&display=swap" rel="stylesheet">
 </head>
-<header>
+<body>
+
+ {% if nobar != 'true' %}
+ <header>
     <div class="container">
         <logo><h1>AcaS</h1></logo>
 
         <nav>
             <ul>
-                <li class="active"><a href="#"><h1>Dashboard</h1></a></li>
-                <li><a href="leaderboard.html"><h1>Leaderboard</h1></a></li>
-                <li class="drop1"><a><sd><h1>Student user</h1></sd></a>
-                    <div class="drop1cont">
-                        <a> username </a>
-                    </div>
+                <li>
+                    {% if session['type'] == 'student' %}
+                        <a href="{{ '/student/' + session['userid'] }}"><h1>Dashboard</h1></a>
+                    {% elif session['type'] == 'teacher' %}
+                        <a href="{{ '/teacher/' + session['userid'] }}"><h1>Dashboard</h1></a>
+                    {% else %}
+                        <a href="{{ '/parent/' + session['userid'] }}"><h1>Dashboard</h1></a>
+                    {% endif %} 
                 </li>
-                <li class="drop2"><a><ld><h1>logout</h1></ld></a>
-                    <div class="drop2cont">
-                        <a> logout </a>
-                    </div>
+
+                <li><a href="/leaderboard"><h1>Leaderboard</h1></a></li>
+                <li class="drop1"><a><h1>{{ session['username'] }}</h1></a></li>
+                <li>
+                    <a href="/logout"><h1>Logout</h1></a>
                 </li>
             </ul>
         </nav>
@@ -27,3 +58,4 @@
 
     </div>
 </header>
+ {% endif %}   
