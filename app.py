@@ -146,11 +146,11 @@ def student_Login():
             id = str(id)
             id = id[2:3]
             #check to see if they need to reset their password
-            reset = login.checkPasswordStudent(username, password)
-            if reset == "true":
-                redirecturl = "/student/"+ id +"/changepassword"
-            elif reset == "false":
+            redirecturl = "/student/"+ id +"/changepassword"
+            reset = login.checkPasswordStudent(id)
+            if reset == "false":
                 redirecturl = "/student/" + id
+
             return redirect(redirecturl)
         else:
             return render_template("SLoginUI.html", msg = "Your username or password is incorrect")
@@ -225,7 +225,7 @@ def leaderboardcalc():
         top_students_points = leaderboard_res["top_students_points"])
 
 @app.route("/student/<studentid>/changepassword", methods=['GET', 'POST'])
-def changepasswordSX(studentid):
+def changepasswordStudent(studentid):
     if request.method == "POST":
         password1 = request.form['password1']
         password2 = request.form['password2']
@@ -235,8 +235,9 @@ def changepasswordSX(studentid):
             redirecturl = "/student/" + studentid
             return redirect(redirecturl)
         else:
-            return render_template("LoginPassword.html", msg = "Passwords do not Match")
-    else:
+            redirecturl = "/student/" + studentid + "/changepassword"
+            return redirect(redirecturl)
+    elif request.method == "GET":
         return render_template("LoginPassword.html")
 
 
