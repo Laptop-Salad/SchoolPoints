@@ -243,7 +243,7 @@ footer {
 }
 
 .leaderboard-house-leaderboard .house {
-height: 50%;
+    height: 50%;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -257,9 +257,6 @@ height: 50%;
 .leaderboard-house-leaderboard .house p {
     margin: 5px 0; /* Adjust margin as needed */
 }
-
-
-/* Add these styles to your existing CSS file */
 
 @keyframes rainbow {
     0% {
@@ -289,15 +286,8 @@ height: 50%;
 .leaderboard-house-leaderboard h2 {
     animation: rainbow 4s infinite; /* Apply animation to the h2 elements */
     -webkit-text-stroke: 1px black; /* Add white outline to text */
-}
-
-
-/* Add these styles to your existing CSS file */
-
-.leaderboard-student-leaderboard h2,
-.leaderboard-house-leaderboard h2 {
-    position: relative;
-    display: inline-block;
+    position: relative; /* Ensure proper positioning */
+    z-index: 1; /* Ensure the titles are on top of other elements */
 }
 
 .leaderboard-student-leaderboard h2::before,
@@ -317,8 +307,9 @@ height: 50%;
     border-radius: 10px;
     padding: 0 10px; /* Adjust padding as needed */
     box-sizing: border-box; /* Ensure padding is included in the width */
+    z-index: -1; /* Ensure the pseudo-element is below the title */
 }
-/* Add these styles to your existing CSS file */
+
 
 table {
     border: 2px solid rgba(255, 255, 255, .2); /* Add border */
@@ -328,17 +319,29 @@ table {
     background-color: #EEDCCBFF;
     backdrop-filter: blur(20px);
 }
-.house-info{
-    border: 2px solid rgba(255, 255, 255, .2); /* Add border */
-    border-radius: 10px; /* Add border-radius */
-    padding: 20px; /* Add padding */
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2); /* Add box shadow */
-    background:  transparent;
+.house-info {
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    background: transparent;
     backdrop-filter: blur(20px);
     animation: rainbow-border 4s infinite;
     width: 17.5%;
     height: 20%;
+
 }
+
+
+.leaderboard-house-leaderboard .house{
+
+    margin: -40px 10px 5px; /* Adjust margin as needed */
+    margin-bottom: 35px; /* Add margin-bottom to all house elements */
+
+}
+
+
+
 
 @keyframes rainbow-border {
     0% {
@@ -380,6 +383,6 @@ table td {
     border: 2px solid transparent; /* Set initial border color to transparent */
 }
 
-/* Add these styles to your existing CSS file */
+
 
 

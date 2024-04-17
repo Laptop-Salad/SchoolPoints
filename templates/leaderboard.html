@@ -22,11 +22,11 @@
             </tr>
 
             {% for pos in range(0, 3) %}
-                <tr>
-                    <th>{{ pos }}</th>
-                    <th>{{ top_students_names[pos] }}</th>
-                    <th>{{ top_students_points[pos] }}</th>
-                </tr>
+            <tr>
+                <th>{{ pos }}</th>
+                <th>{{ top_students_names[pos] }}</th>
+                <th>{{ top_students_points[pos] }}</th>
+            </tr>
             {% endfor %}
         </table>
     </div>
@@ -43,14 +43,15 @@
                 <h3>{{ losingHouse }}</h3>
                 <p>{{ losingTotal }}</p>
             </div>
-        </div>
 
-        {% for house in range(0, house_names|length) %}
+            {% for house in range(0, house_names|length) %}
             <div class="house">
                 <h3>{{ house_names[house] }}</h3>
                 <p>{{ house_totals[house] }}</p>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
     </div>
 
 </div>
