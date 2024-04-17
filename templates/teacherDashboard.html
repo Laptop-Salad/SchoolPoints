@@ -6,7 +6,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/Tstyle.css') }}">
 </head>
 <body>
-{% include "header.html" %}
+{% include "components/header.html" %}
 
 
 <div>
@@ -38,7 +38,7 @@
 
 <script src="{{ url_for('static',filename='scripts/search.js') }}"></script>
 
-{% include "footer.html" %}
+{% include "components/footer.html" %}
 
 </body>
 </html>
