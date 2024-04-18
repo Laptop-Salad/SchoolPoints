@@ -236,18 +236,20 @@ def leaderboardcalc():
 @app.route("/student/<studentid>/changepassword", methods=['GET', 'POST'])
 def changepasswordStudent(studentid):
     if request.method == "POST":
+        reset = Reset
         password1 = request.form['password1']
         password2 = request.form['password2']
-        if password1 == password2:
-            reset = Reset
-            reset.resetPasswordS(studentid, password1)
+        checkprev = reset.checkprevpassword(studentid, studentid, password1)
+        if password1 == password2 and checkprev == False:
+            reset.resetPasswordS(studentid, studentid, password1)
             redirecturl = "/student/" + studentid
             return redirect(redirecturl)
+        elif password1 == password2 and checkprev == True :
+            return render_template("LoginPassword.html", title="Change Password", id = studentid, msg = "Password can not be the same as your previous password")
         else:
-            redirecturl = "/student/" + studentid + "/changepassword"
-            return redirect(redirecturl)
+            return render_template("LoginPassword.html", title="Change Password", id = studentid, msg = "Passwords do no match")
     elif request.method == "GET":
-        return render_template("LoginPassword.html", title="Change Psassword")
+        return render_template("LoginPassword.html", title="Change Password", id = studentid)
 
 
 if __name__ == '__main__':
