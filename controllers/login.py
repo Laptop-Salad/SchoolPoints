@@ -71,7 +71,34 @@ class Login:
         check = cursor.fetchall()
         check = str(check)
         check = check[2:3]
-        if check == 1:
+        if check == "1":
+            reset = "true"
+        else:
+            reset = "false"
+        return reset
+
+
+    def checkPasswordTeacher(self, id):
+        conn = sqlite3.connect("school.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT resetpassword FROM teachers WHERE id = '%s'" %(id))
+        check = cursor.fetchall()
+        check = str(check)
+        check = check[2:3]
+        if check == "1":
+            reset = "true"
+        else:
+            reset = "false"
+        return reset
+
+    def checkPasswordParent(self, id):
+        conn = sqlite3.connect("school.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT resetpassword FROM parents WHERE id = '%s'" %(id))
+        check = cursor.fetchall()
+        check = str(check)
+        check = check[2:3]
+        if check == "1":
             reset = "true"
         else:
             reset = "false"
