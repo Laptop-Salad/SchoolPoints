@@ -69,7 +69,7 @@ nav li.active a::after {
     content: ''; /* Create the underline */
     position: absolute; /* Position the underline */
     left: 0;
-    bottom: 14px; /* Adjust the distance of the underline from the text */
+    bottom: 14px; /*  the distance of the underline from the text */
     width: 100%; /* Make the underline span the entire width */
     border-bottom: 2px solid lightcoral; /* Style the underline */
 }
@@ -96,12 +96,12 @@ nav li.active a:hover {
 
 }
 .drop1cont {
-    left: 47%; /* Adjust as needed */
+    left: 47%;
     top: 100%; /* Position it below the parent element */
     transform: translateX(-50%); /* Center the dropdown horizontally */
 }
 .drop2cont {
-    left: 47%; /* Adjust as needed */
+    left: 47%;
     top: 100%; /* Position it below the parent element */
     transform: translateX(-50%); /* Center the dropdown horizontally */
 }
@@ -227,7 +227,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     border-radius: 10px;
     padding: 30px 40px;
-    margin: 100px auto 0; /* Adjusted margin-top to move the .All box down */
+    margin: 100px auto 0;
     text-align: center;
 }
 .findS {
