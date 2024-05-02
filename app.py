@@ -216,7 +216,7 @@ def changepasswordStudent(studentid):
     return "Unauthorized", 401
 
 @app.route("/teacher/<teacherid>/changepassword", methods=['GET', 'POST'])
-def changepasswordStudent(teacherid):
+def changepasswordTeacher(teacherid):
     if (ensureTeacher(teacherid)):
         if request.method == "POST":
             reset = Reset
@@ -304,7 +304,7 @@ def teacher_Login():
         else:
             return render_template("TLoginUI.html", title="Teacher Login", msg = "Your username or password is incorrect")
     else:
-        return render_template("TLoginUI.html", title="Teacher Login"
+        return render_template("TLoginUI.html", title="Teacher Login")
 
 #parentlogin
 @app.route('/parentlogin', methods=['GET', 'POST'])
