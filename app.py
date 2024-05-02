@@ -201,17 +201,17 @@ def changepasswordStudent(studentid):
             reset = Reset
             password1 = request.form['password1']
             password2 = request.form['password2']
-            checkprev = reset.checkprevpassword(studentid, studentid, password1)
+            checkprev = reset.checkprevpasswordS(studentid, studentid, password1)
             if password1 == password2 and checkprev == False:
                 reset.resetPasswordS(studentid, studentid, password1)
                 redirecturl = "/student/" + studentid
                 return redirect(redirecturl)
             elif password1 == password2 and checkprev == True :
-                return render_template("LoginPassword.html", title="Change Password", id = studentid, msg = "Password can not be the same as your previous password")
+                return render_template("LoginPasswordS.html", title="Change Password", id = studentid, msg = "Password can not be the same as your previous password")
             else:
-                return render_template("LoginPassword.html", title="Change Password", id = studentid, msg = "Passwords do no match")
+                return render_template("LoginPasswordS.html", title="Change Password", id = studentid, msg = "Passwords do no match")
         elif request.method == "GET":
-            return render_template("LoginPassword.html", title="Change Password", id = studentid)
+            return render_template("LoginPasswordS.html", title="Change Password", id = studentid)
 
     return "Unauthorized", 401
 
