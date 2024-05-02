@@ -232,7 +232,7 @@ def changepasswordTeacher(teacherid):
             else:
                 return render_template("LoginPasswordT.html", title="Change Password", id = teacherid, msg = "Passwords do no match")
         elif request.method == "GET":
-            return render_template("LoginPasswordT.htmlT", title="Change Password", id = teacherid)
+            return render_template("LoginPasswordT.html", title="Change Password", id = teacherid)
 
     return "Unauthorized", 401
 
