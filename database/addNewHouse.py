@@ -36,9 +36,9 @@ cursor = conn.cursor()
 
 #cursor.execute("UPDATE students SET resetpassword = 1")
 
-#cursor.execute(("ALTER TABLE teachers ADD resetpassword int"))
+cursor.execute(("ALTER TABLE teachers ADD resetpassword int"))
 
-#cursor.execute("UPDATE teachers SET resetpassword = 1")
+cursor.execute("UPDATE teachers SET resetpassword = 1")
 
 #cursor.execute(("ALTER TABLE parents ADD resetpassword int"))
 
