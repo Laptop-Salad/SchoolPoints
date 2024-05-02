@@ -212,6 +212,26 @@ def changepasswordStudent(studentid):
                 return render_template("LoginPasswordS.html", title="Change Password", id = studentid, msg = "Passwords do no match")
         elif request.method == "GET":
             return render_template("LoginPasswordS.html", title="Change Password", id = studentid)
+    return "Unauthorized", 401
+
+@app.route("/teacher/<teacherid>/changepassword", methods=['GET', 'POST'])
+def changepasswordTeacher(teacherid):
+    if (ensureTeacher(teacherid)):
+        if request.method == "POST":
+            reset = Reset
+            password1 = request.form['password1']
+            password2 = request.form['password2']
+            checkprev = reset.checkprevpasswordT(teacherid, teacherid, password1)
+            if password1 == password2 and checkprev == False:
+                reset.resetPasswordT(teacherid, teacherid, password1)
+                redirecturl = "/teacher/" + teacherid
+                return redirect(redirecturl)
+            elif password1 == password2 and checkprev == True :
+                return render_template("LoginPasswordT.html", title="Change Password", id = teacherid, msg = "Password can not be the same as your previous password")
+            else:
+                return render_template("LoginPasswordT.html", title="Change Password", id = teacherid, msg = "Passwords do no match")
+        elif request.method == "GET":
+            return render_template("LoginPasswordT.html", title="Change Password", id = teacherid)
 
     return "Unauthorized", 401
 
@@ -261,18 +281,23 @@ def teacher_Login():
         login = Login()
 
         #check to see if username and password are correct
-        check = login.teacherCheckLogin(username,password)
+        check = login.teacherCheckLogin(username, password)
         if check == True:
             #if the username and password are correct get the id
             id = login.teacherLogin(username, password)
             id = str(id)
             id = id[2:3]
-            redirecturl = "/teacher/" + id
 
             # start session
             session["username"] = username
             session["userid"] = id
             session["type"] = "teacher"
+
+            #check to see if they need to reset their password
+            redirecturl = "/teacher/"+ id +"/changepassword"
+            reset = login.checkPasswordTeacher(id)
+            if reset == False:
+                redirecturl = "/teacher/" + id
 
             return redirect(redirecturl)
         else:

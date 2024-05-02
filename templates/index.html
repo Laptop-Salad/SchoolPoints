@@ -1,13 +1,17 @@
 {% with title=title, nobar='true', login='true' %}
-    {% include "components/header.html" %}
+{% include "components/header.html" %}
 {% endwith %}
 
-<div class="choose-you">
-    <form>
-        <div class="text"> <h1> Welcome to ACAS </h1></div>
-        <a href="/studentlogin" class="btn1">Student Login</a>
-        <a href="/teacherlogin" class="btn1">Teacher Login</a>
-        <a href="/parentlogin" class="btn1">Parent Login</a>
+<div class="welcome"> Welcome to AcaS </div>
+
+<div class="wrapper">
+    <form action="">
+        <div class ="text"> <h1> Who are you? </h1></div>
+        <a href="/studentlogin" class="btn1"> Student login </a>
+        <a href="/teacherlogin" class="btn1"> Teacher login </a>
+        <a href="/parentlogin" class="btn1"> Parent login </a>
+
+
     </form>
 </div>
 
