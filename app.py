@@ -24,6 +24,7 @@ def ensureStudent(id = None):
 
 def ensureParent(id = None):
     # The id of the parent
+    print(session.get("type"), session.get("userid"))
     if (id):
         return (session.get("type") == "parent") and (session.get("userid") == id)
     else:
@@ -299,7 +300,7 @@ def parent_Login():
             # start session
             session["username"] = username
             session["userid"] = id
-            session["type"] = "student"
+            session["type"] = "parent"
 
             redirecturl = "/parent/" + id
             return redirect(redirecturl)
