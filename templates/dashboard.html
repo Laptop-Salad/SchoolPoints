@@ -1,9 +1,15 @@
 {% with title=title %}
-    {% include "components/header.html" %}
+{% include "components/header.html" %}
 {% endwith %}
 
 <div style="display: flex; justify-content: center; width: 100%">
-    <p style="background-color: white; border-radius: 5px; padding: 10px;">Im part of house {{ house }}</p>
+    <p style="background-color: transparent; border-radius: 5px; padding: 10px; backdrop-filter: blur(20px); box-shadow: 0 0 10px rgba(0, 0, 0, .2); border: 2px solid rgba(255, 255, 255, .2);border-radius: 40px; font-size: larger">
+        {% if session['type'] == 'student' %}
+        Part of {{ house }} house
+        {% else %}
+        This student is part of the {{ house }} house
+        {% endif %}
+    </p>
 </div>
 
 <div class="containerd">
