@@ -256,10 +256,11 @@ def teacher_Login():
     if request.method == "POST":
         username = request.form['Username']
         password = request.form['Password']
+
         login = Login()
 
         #check to see if username and password are correct
-        check = login.teacherCheckLogin(username, password)
+        check = login.teacherCheckLogin(username,password)
         if check == True:
             #if the username and password are correct get the id
             id = login.teacherLogin(username, password)
@@ -288,16 +289,17 @@ def parent_Login():
         login = Login()
 
         #check to see if username and password are correct
-        check = login.parentCheckLogin(username, password)
+        check = login.parentCheckLogin(username,password)
         if check == True:
             #if the username and password are correct get the id
             id = login.parentLogin(username, password)
             id = str(id)
             id = id[2:3]
 
+            # start session
             session["username"] = username
             session["userid"] = id
-            session["type"] = "parent"
+            session["type"] = "student"
 
             redirecturl = "/parent/" + id
             return redirect(redirecturl)

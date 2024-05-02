@@ -76,7 +76,7 @@ nav li.active a::after {
     content: ''; /* Create the underline */
     position: absolute; /* Position the underline */
     left: 0;
-    bottom: 14px; /* Adjust the distance of the underline from the text */
+    bottom: 14px; /* the distance of the underline from the text */
     width: 100%; /* Make the underline span the entire width */
     border-bottom: 2px solid lightcoral; /* Style the underline */
 }
@@ -102,12 +102,12 @@ nav li.active a:hover {
 
 }
 .drop1cont {
-    left: 47%; /* Adjust as needed */
+    left: 47%;
     top: 100%; /* Position it below the parent element */
     transform: translateX(-50%); /* Center the dropdown horizontally */
 }
 .drop2cont {
-    left: 47%; /* Adjust as needed */
+    left: 47%;
     top: 100%; /* Position it below the parent element */
     transform: translateX(-50%); /* Center the dropdown horizontally */
 }
@@ -218,14 +218,12 @@ footer {
 
 
 
-/* Add these styles to your existing CSS file */
-
 .leaderboard-student-leaderboard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30vh; /* Adjust as needed */
+    height: 30vh;
 }
 
 .leaderboard-house-leaderboard {
@@ -233,7 +231,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30vh; /* Adjust as needed */
+    height: 30vh;
 }
 
 .leaderboard-house-leaderboard .house-info {
@@ -255,7 +253,7 @@ footer {
 }
 
 .leaderboard-house-leaderboard .house p {
-    margin: 5px 0; /* Adjust margin as needed */
+    margin: 5px 0;
 }
 
 @keyframes rainbow {
@@ -305,7 +303,7 @@ footer {
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     border-radius: 10px;
-    padding: 0 10px; /* Adjust padding as needed */
+    padding: 0 10px;
     box-sizing: border-box; /* Ensure padding is included in the width */
     z-index: -1; /* Ensure the pseudo-element is below the title */
 }
@@ -335,7 +333,7 @@ table {
 
 .leaderboard-house-leaderboard .house{
 
-    margin: -40px 10px 5px; /* Adjust margin as needed */
+    margin: -40px 10px 5px;
     margin-bottom: 35px; /* Add margin-bottom to all house elements */
 
 }

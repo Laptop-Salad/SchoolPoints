@@ -4,4 +4,3 @@
 - Ensure pages requires proper access.
 - 404 page if someone tries to go to a non-existent link.
 - Login session.
-- Error page for errors with dataabase.

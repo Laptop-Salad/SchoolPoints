@@ -94,12 +94,12 @@ body{
     font-size: 16px;
     color: black;
     font-weight: 600;
-    margin-bottom: 10px; /* Added margin bottom for spacing between buttons */
+    margin-bottom: 10px;
 }
 .wrapper .text {
     font-size: 36px;
     text-align: center;
-    margin-bottom: 20px; /* Added margin bottom for spacing between heading and buttons */
+    margin-bottom: 20px;
 }
 
 /* Choose You */
