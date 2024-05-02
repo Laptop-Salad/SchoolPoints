@@ -1,4 +1,4 @@
-# Bringing the project together
+# Bringing the project together | Completed
 
 - Security features to be added at the end of the project.
 - Ensure pages requires proper access.
