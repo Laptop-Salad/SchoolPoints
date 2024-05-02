@@ -2,6 +2,7 @@
     {% include "components/header.html" %}
 {% endwith %}
 
+{% if session['type'] == 'teacher' %}
 <form action="/student/{{ student_num }}/grades" method="POST" class="form-container">
     <div class="form-group">
         <input type="text" name="comment" id="comment" placeholder="Comment" class="comment-input">
@@ -10,6 +11,7 @@
 
     </div>
 </form>
+{% endif %}
 
 <div>
     <div class="containerdd">

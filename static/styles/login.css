@@ -101,3 +101,27 @@ body{
     text-align: center;
     margin-bottom: 20px; /* Added margin bottom for spacing between heading and buttons */
 }
+
+/* Choose You */
+.choose-you {
+    text-align: center;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.choose-you div {
+    margin: 0 0 20px 0;
+}
+
+.choose-you a {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 5px 2px;
+    border-radius: 5px;
+    margin: 5px;
+}

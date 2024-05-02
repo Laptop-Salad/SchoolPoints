@@ -45,6 +45,32 @@ class Teacher:
         conn.commit()
         conn.close()
 
+    def get_emails(self):
+        conn = sqlite3.connect("school.db")
+        cursor = conn.cursor()
+
+        # Get all students
+        cursor.execute("SELECT username, email FROM teachers")
+
+        emails = []
+
+        result = cursor.fetchall()
+
+        for row in result:
+            email = []
+
+            email.append({
+                "name": row[0],
+                "email": row[1]
+            })
+
+            emails.append(email)
+        
+        return emails
+
+        conn.commit()
+        conn.close()
+
 
 
 

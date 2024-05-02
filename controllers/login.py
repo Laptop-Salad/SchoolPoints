@@ -1,66 +1,78 @@
 import sqlite3
 from sqlite3 import Error
+import bcrypt 
 
 class Login:
 
     def studentCheckLogin(self,username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        confirmLogin = False
 
-        cursor.execute("SELECT id FROM students WHERE username = '%s' AND Password = '%s'" %(username, password))
+        cursor.execute("SELECT password FROM students WHERE username = '%s'" %(username))
         check = cursor.fetchall()
 
-        if check:
-            confirmLogin = True
-        return confirmLogin
+        if (len(check) > 0):
+            userBytes = password.encode('utf-8') 
+            bytes = check[0][0]
+            try:
+                bytes = bytes.encode('utf-8') 
+            except:
+                pass   
+            result = bcrypt.checkpw(userBytes, bytes) 
+            return result
+        
+        return False    
 
     def studentLogin(self,username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM students WHERE username = '%s' AND Password = '%s'" %(username, password))
+        cursor.execute("SELECT id FROM students WHERE username = '%s'" %(username))
         check = cursor.fetchall()
         return check
-
-#
 
     def teacherCheckLogin(self,username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        confirmLogin = False
 
-        cursor.execute("SELECT id FROM teachers WHERE username = '%s' AND Password = '%s'" %(username, password))
+        cursor.execute("SELECT password FROM teachers WHERE username = '%s'" %(username))
         check = cursor.fetchall()
 
-        if check:
-            confirmLogin = True
-        return confirmLogin
+        if (len(check) > 0):
+            userBytes = password.encode('utf-8') 
+            bytes = check[0][0]
+            bytes = bytes.encode('utf-8') 
+            result = bcrypt.checkpw(userBytes, bytes) 
+            return result
+        
+        return False  
 
     def teacherLogin(sself, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM teachers WHERE username = '%s' AND Password = '%s'" %(username, password))
+        cursor.execute("SELECT id FROM teachers WHERE username = '%s'" %(username))
         check = cursor.fetchall()
         return check
-#
-#
 
     def parentCheckLogin(self, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        confirmLogin = False
 
-        cursor.execute("SELECT id FROM parents WHERE username = '%s' AND Password = '%s'" %(username, password))
+        cursor.execute("SELECT password FROM parents WHERE username = '%s'" %(username))
         check = cursor.fetchall()
 
-        if check:
-            confirmLogin = True
-        return confirmLogin
+        if (len(check) > 0):
+            userBytes = password.encode('utf-8') 
+            bytes = check[0][0]
+            bytes = bytes.encode('utf-8') 
+            result = bcrypt.checkpw(userBytes, bytes) 
+            return result
+        
+        return False  
 
     def parentLogin(self, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM parents WHERE username = '%s' AND Password = '%s'" %(username, password))
+        cursor.execute("SELECT id FROM parents WHERE username = '%s'" %(username))
         check = cursor.fetchall()
         return check
 

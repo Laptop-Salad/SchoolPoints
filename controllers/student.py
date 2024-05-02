@@ -78,3 +78,14 @@ class Student:
             "others_points": others,
             "total_points": total_points
         }
+
+    def getHouse(self, studentid):
+        conn = sqlite3.connect("school.db")
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT housename FROM houses WHERE id = '" + str(studentid) + "';")
+        res = cursor.fetchall()
+        conn.close()
+
+        return res[0][0]
+
