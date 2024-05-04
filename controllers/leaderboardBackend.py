@@ -36,9 +36,22 @@ class Leaderboard:
                         top_three_students.insert(0, student.get_student_name(studentid[0]))
                         top_three_students.pop(-1)
                         break
-            
+                        
             house_names.append(house[0])
             house_totals.append(house_total)
+
+        # Use bubble sort to sort students
+        for i in range(len(top_three_points)-1):
+            swapped = False
+
+            for j in range(0, len(top_three_points)-i-1):
+                if top_three_points[j] < top_three_points[j + 1]:
+                    swapped = True
+                    top_three_points[j], top_three_points[j + 1] = top_three_points[j + 1], top_three_points[j]
+                    top_three_students[j], top_three_students[j + 1] = top_three_students[j + 1], top_three_students[j]
+
+            if not swapped:
+                break
 
         # Use bubble sort to sort houses
         houses = len(house_names)
@@ -53,7 +66,7 @@ class Leaderboard:
 
             if not swapped:
                 break
-        
+
         return {
             "house_names": house_names,
             "house_totals": house_totals,
