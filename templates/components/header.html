@@ -39,15 +39,15 @@
             <ul>
                 <li>
                     {% if session['type'] == 'student' %}
-                        <a href="{{ '/student/' + session['userid'] }}"><h1>Dashboard</h1></a>
+                        <a {{ "class=active" if active == 'dashboard' else "" }} href="{{ '/student/' + session['userid'] }}"><h1>Dashboard</h1></a>
                     {% elif session['type'] == 'teacher' %}
-                        <a href="{{ '/teacher/' + session['userid'] }}"><h1>Dashboard</h1></a>
+                        <a {{ "class=active" if active == 'dashboard' else "" }} href="{{ '/teacher/' + session['userid'] }}"><h1>Dashboard</h1></a>
                     {% else %}
-                        <a href="{{ '/parent/' + session['userid'] }}"><h1>Dashboard</h1></a>
+                        <a {{ "class=active" if active == 'dashboard' else "" }} href="{{ '/parent/' + session['userid'] }}"><h1>Dashboard</h1></a>
                     {% endif %} 
                 </li>
 
-                <li><a href="/leaderboard"><h1>Leaderboard</h1></a></li>
+                <li><a  {{ "class=active" if active == 'leaderboard' else "" }} href="/leaderboard"><h1>Leaderboard</h1></a></li>
                 <li class="drop1"><a><h1>{{ session['username'] }}</h1></a></li>
                 <li>
                     <a href="/logout"><h1>Logout</h1></a>

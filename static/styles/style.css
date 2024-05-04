@@ -239,6 +239,11 @@ body {
     animation: rainbow 4s infinite; /* Apply animation on hover */
 }
 
+.active {
+    background-color: #FBC528;
+    box-shadow: 0 0 20px 10px rgb(251, 197, 40); /* Increase blur effect */
+}
+
 @keyframes rainbow {
     0% {
         background-color: #FE9696;
