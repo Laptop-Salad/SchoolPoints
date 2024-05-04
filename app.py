@@ -262,7 +262,7 @@ def student_Login():
             #check to see if they need to reset their password
             redirecturl = "/student/"+ id +"/changepassword"
             reset = login.checkPasswordStudent(id)
-            if reset == "false":
+            if reset:
                 redirecturl = "/student/" + id
 
             return redirect(redirecturl)
@@ -296,7 +296,7 @@ def teacher_Login():
             #check to see if they need to reset their password
             redirecturl = "/teacher/"+ id +"/changepassword"
             reset = login.checkPasswordTeacher(id)
-            if reset == "false":
+            if reset:
                 redirecturl = "/teacher/" + id
 
             return redirect(redirecturl)

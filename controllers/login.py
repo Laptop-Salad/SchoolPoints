@@ -83,11 +83,7 @@ class Login:
         check = cursor.fetchall()
         check = str(check)
         check = check[2:3]
-        if check == "1":
-            reset = "true"
-        else:
-            reset = "false"
-        return reset
+        return check == "1"
 
 
     def checkPasswordTeacher(self, id):
@@ -97,11 +93,7 @@ class Login:
         check = cursor.fetchall()
         check = str(check)
         check = check[2:3]
-        if check == "1":
-            reset = "true"
-        else:
-            reset = "false"
-        return reset
+        return check == "1"
 
     def checkPasswordParent(self, id):
         conn = sqlite3.connect("school.db")
