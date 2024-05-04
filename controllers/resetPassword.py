@@ -11,7 +11,7 @@ class Reset:
         bytes = newpassword.encode('utf-8') 
         hash = bcrypt.hashpw(bytes, salt) 
 
-        cursor.execute("UPDATE students SET password = ?, resetpassword = 1 WHERE id = ?", (hash, id))
+        cursor.execute("UPDATE students SET password = ?, resetpassword = 0 WHERE id = ?", (hash, id))
         conn.commit()
 
     def checkprevpasswordS(self, id, newpassword):

@@ -201,17 +201,37 @@ def changepasswordStudent(studentid):
             reset = Reset
             password1 = request.form['password1']
             password2 = request.form['password2']
-            checkprev = reset.checkprevpassword(studentid, studentid, password1)
+            checkprev = reset.checkprevpasswordS(studentid, studentid, password1)
             if password1 == password2 and checkprev == False:
                 reset.resetPasswordS(studentid, studentid, password1)
                 redirecturl = "/student/" + studentid
                 return redirect(redirecturl)
             elif password1 == password2 and checkprev == True :
-                return render_template("LoginPassword.html", title="Change Password", id = studentid, msg = "Password can not be the same as your previous password")
+                return render_template("LoginPasswordS.html", title="Change Password", id = studentid, msg = "Password can not be the same as your previous password")
             else:
-                return render_template("LoginPassword.html", title="Change Password", id = studentid, msg = "Passwords do no match")
+                return render_template("LoginPasswordS.html", title="Change Password", id = studentid, msg = "Passwords do no match")
         elif request.method == "GET":
-            return render_template("LoginPassword.html", title="Change Password", id = studentid)
+            return render_template("LoginPasswordS.html", title="Change Password", id = studentid)
+    return "Unauthorized", 401
+
+@app.route("/teacher/<teacherid>/changepassword", methods=['GET', 'POST'])
+def changepasswordTeacher(teacherid):
+    if (ensureTeacher(teacherid)):
+        if request.method == "POST":
+            reset = Reset
+            password1 = request.form['password1']
+            password2 = request.form['password2']
+            checkprev = reset.checkprevpasswordT(teacherid, teacherid, password1)
+            if password1 == password2 and checkprev == False:
+                reset.resetPasswordT(teacherid, teacherid, password1)
+                redirecturl = "/teacher/" + teacherid
+                return redirect(redirecturl)
+            elif password1 == password2 and checkprev == True :
+                return render_template("LoginPasswordT.html", title="Change Password", id = teacherid, msg = "Password can not be the same as your previous password")
+            else:
+                return render_template("LoginPasswordT.html", title="Change Password", id = teacherid, msg = "Passwords do no match")
+        elif request.method == "GET":
+            return render_template("LoginPasswordT.html", title="Change Password", id = teacherid)
 
     return "Unauthorized", 401
 
@@ -242,7 +262,7 @@ def student_Login():
             #check to see if they need to reset their password
             redirecturl = "/student/"+ id +"/changepassword"
             reset = login.checkPasswordStudent(id)
-            if reset == False:
+            if reset == "false":
                 redirecturl = "/student/" + id
 
             return redirect(redirecturl)
@@ -261,18 +281,23 @@ def teacher_Login():
         login = Login()
 
         #check to see if username and password are correct
-        check = login.teacherCheckLogin(username,password)
+        check = login.teacherCheckLogin(username, password)
         if check == True:
             #if the username and password are correct get the id
             id = login.teacherLogin(username, password)
             id = str(id)
             id = id[2:3]
-            redirecturl = "/teacher/" + id
 
             # start session
             session["username"] = username
             session["userid"] = id
             session["type"] = "teacher"
+
+            #check to see if they need to reset their password
+            redirecturl = "/teacher/"+ id +"/changepassword"
+            reset = login.checkPasswordTeacher(id)
+            if reset == "false":
+                redirecturl = "/teacher/" + id
 
             return redirect(redirecturl)
         else:
