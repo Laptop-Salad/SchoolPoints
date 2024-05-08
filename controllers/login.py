@@ -1,6 +1,6 @@
 import sqlite3
 from sqlite3 import Error
-import bcrypt 
+import bcrypt
 
 class Login:
 
@@ -23,7 +23,7 @@ class Login:
         
         return False    
 
-    def studentLogin(self,username, password):
+    def studentLogin(self, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
         cursor.execute("SELECT id FROM students WHERE username = '%s'" %(username))
@@ -107,6 +107,7 @@ class Login:
         else:
             reset = "false"
         return reset
+
 
 
 

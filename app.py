@@ -251,8 +251,8 @@ def student_Login():
         if check == True:
             #if the username and password are correct get the id
             id = login.studentLogin(username, password)
+            id = id[0][0]
             id = str(id)
-            id = id[2:3]
 
             # start session
             session["username"] = username
@@ -285,8 +285,8 @@ def teacher_Login():
         if check == True:
             #if the username and password are correct get the id
             id = login.teacherLogin(username, password)
+            id = id[0][0]
             id = str(id)
-            id = id[2:3]
 
             # start session
             session["username"] = username
@@ -319,8 +319,8 @@ def parent_Login():
         if check == True:
             #if the username and password are correct get the id
             id = login.parentLogin(username, password)
+            id = [0][0]
             id = str(id)
-            id = id[2:3]
 
             # start session
             session["username"] = username
