@@ -15,17 +15,6 @@
         <div id="searchResults">
 
         </div>
-
-        <div id="initResults">
-            {% for i in range(students.student_names|length) %}
-            <div class ="findS">
-                <div class="student-info-box">
-                    <p>{{ students.student_names[i] }}</p>
-                    <a href="/student/{{ students.student_ids[i]}}">Select</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
     </div>
 </div>
 

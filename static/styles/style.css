@@ -631,7 +631,10 @@ body {
     }
 }
 
-
+#searchResults {
+    overflow-y: scroll;
+    max-height: 300px;
+}
 
 
 .form-group input[name="points"] {

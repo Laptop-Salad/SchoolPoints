@@ -1,13 +1,14 @@
 const searchResults = document.getElementById("searchResults");
-const initResults = document.getElementById("initResults");
 const searchInput = document.getElementById("searchStudents");
 
 searchInput.addEventListener("input", () => {
-    initResults.style.display = "none";
     let currTerm = searchInput.value;
 
     if (currTerm) {
+        searchResults.style.display = "block";
         getSearchRes();
+    } else {
+        searchResults.style.display = "none";
     }
 });
 
@@ -20,7 +21,7 @@ function getSearchRes() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             // Clear previous search results
-            document.getElementById("searchResults").innerHTML = "";
+            searchResults.innerHTML = "";
 
             var data = JSON.parse(this.responseText);
             var student_ids = data.student_ids;
