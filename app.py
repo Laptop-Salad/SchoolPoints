@@ -201,7 +201,7 @@ def changepasswordStudent(studentid):
             reset = Reset
             password1 = request.form['password1']
             password2 = request.form['password2']
-            checkprev = reset.checkprevpasswordS(studentid, studentid, password1)
+            checkprev = False
             if password1 == password2 and checkprev == False:
                 reset.resetPasswordS(studentid, studentid, password1)
                 redirecturl = "/student/" + studentid
@@ -221,7 +221,7 @@ def changepasswordTeacher(teacherid):
             reset = Reset
             password1 = request.form['password1']
             password2 = request.form['password2']
-            checkprev = reset.checkprevpasswordT(teacherid, teacherid, password1)
+            checkprev = False
             if password1 == password2 and checkprev == False:
                 reset.resetPasswordT(teacherid, teacherid, password1)
                 redirecturl = "/teacher/" + teacherid
