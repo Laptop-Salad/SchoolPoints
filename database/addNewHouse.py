@@ -34,11 +34,11 @@ cursor = conn.cursor()
 #add new field
 #cursor.execute(("ALTER TABLE students ADD resetpassword int"))
 
-#cursor.execute("UPDATE students SET resetpassword = 1")
+#cursor.execute("UPDATE students SET resetpassword = 0")
 
 #cursor.execute(("ALTER TABLE teachers ADD resetpassword int"))
 
-cursor.execute("UPDATE teachers SET username = 'Mr David' WHERE id = 2")
+#cursor.execute("UPDATE teachers SET username = 'Mr David' WHERE id = 2")
 
 #cursor.execute(("ALTER TABLE parents ADD resetpassword int"))
 

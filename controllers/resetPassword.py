@@ -11,7 +11,7 @@ class Reset:
         bytes = newpassword.encode('utf-8') 
         hash = bcrypt.hashpw(bytes, salt) 
 
-        cursor.execute("UPDATE students SET password = ?, resetpassword = 0 WHERE id = ?", (hash, id))
+        cursor.execute("UPDATE students SET password = ?, resetpassword = 1 WHERE id = ?", (hash, id))
         conn.commit()
 
     def checkprevpasswordS(self, id, newpassword):
@@ -32,7 +32,7 @@ class Reset:
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
         newpassword = "'" + newpassword + "'"
-        cursor.execute("UPDATE teachers SET password = %s, resetpassword = 0 WHERE id= %s" %(newpassword, id))
+        cursor.execute("UPDATE teachers SET password = %s, resetpassword = 1 WHERE id= %s" %(newpassword, id))
         conn.commit()
 
     def checkprevpasswordT(self, id, newpassword):
@@ -53,7 +53,7 @@ class Reset:
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
         newpassword = "'" + newpassword + "'"
-        cursor.execute("UPDATE parents SET password = %s, resetpassword = 0 WHERE id= %s" %(newpassword, id))
+        cursor.execute("UPDATE parents SET password = %s, resetpassword = 1 WHERE id= %s" %(newpassword, id))
         conn.commit()
 
     def checkprevpasswordP(self, id, newpassword):
