@@ -319,8 +319,6 @@ def parent_Login():
         if check == True:
             #if the username and password are correct get the id
             id = login.parentLogin(username, password)
-            id = [0][0]
-            id = str(id)
 
             # start session
             session["username"] = username

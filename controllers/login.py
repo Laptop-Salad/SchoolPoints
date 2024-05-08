@@ -2,6 +2,7 @@ import sqlite3
 from sqlite3 import Error
 import bcrypt
 
+
 class Login:
 
     def studentCheckLogin(self,username, password):
@@ -46,7 +47,7 @@ class Login:
         
         return False  
 
-    def teacherLogin(sself, username, password):
+    def teacherLogin(self, username, password):
         conn = sqlite3.connect("school.db")
         cursor = conn.cursor()
         cursor.execute("SELECT id FROM teachers WHERE username = '%s'" %(username))
@@ -74,6 +75,8 @@ class Login:
         cursor = conn.cursor()
         cursor.execute("SELECT id FROM parents WHERE username = '%s'" %(username))
         check = cursor.fetchall()
+        check = check[0][0]
+        check = str(check)
         return check
 
     def checkPasswordStudent(self, id):
@@ -107,7 +110,5 @@ class Login:
         else:
             reset = "false"
         return reset
-
-
 
 
