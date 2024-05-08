@@ -42,7 +42,7 @@ cursor = conn.cursor()
 
 #cursor.execute(("ALTER TABLE parents ADD resetpassword int"))
 
-#cursor.execute("UPDATE teachers SET resetpassword = 0")
+cursor.execute("UPDATE teachers SET email = 'mrdavid@acas.edu' WHERE id = 2")
 
 print("Records added to Database")
 conn.commit()
