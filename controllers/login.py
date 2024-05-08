@@ -41,11 +41,14 @@ class Login:
         if (len(check) > 0):
             userBytes = password.encode('utf-8')
             bytes = check[0][0]
-            bytes = bytes.encode('utf-8')
+            try:
+                bytes = bytes.encode('utf-8')
+            except:
+                pass
             result = bcrypt.checkpw(userBytes, bytes)
             return result
-        
-        return False  
+
+        return False
 
     def teacherLogin(self, username, password):
         conn = sqlite3.connect("school.db")
