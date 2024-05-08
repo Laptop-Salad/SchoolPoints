@@ -217,7 +217,6 @@ footer {
 }
 
 
-
 .leaderboard-student-leaderboard {
     display: flex;
     flex-direction: column;
@@ -231,7 +230,9 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30vh;
+    height: 50vh;
+    margin-top: -80px;
+
 }
 
 .leaderboard-house-leaderboard .house-info {
@@ -241,11 +242,12 @@ footer {
 }
 
 .leaderboard-house-leaderboard .house {
-    height: 50%;
+    height: 40%;
     text-align: center;
     display: flex;
     flex-direction: row;
     align-items: center;
+
 }
 
 .leaderboard-house-leaderboard .house h3 {
@@ -320,7 +322,7 @@ table {
 .house-info {
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     background: transparent;
     backdrop-filter: blur(20px);
@@ -333,11 +335,12 @@ table {
 
 .leaderboard-house-leaderboard .house{
 
-    margin: -40px 10px 5px;
-    margin-bottom: 35px; /* Add margin-bottom to all house elements */
+    margin: -38px 10px 20px;
+    margin-bottom: 56px;
+    margin-top: -66.5px;
+    position: relative;
 
 }
-
 
 
 
@@ -380,7 +383,3 @@ table td {
     text-align: center;
     border: 2px solid transparent; /* Set initial border color to transparent */
 }
-
-
-
-
