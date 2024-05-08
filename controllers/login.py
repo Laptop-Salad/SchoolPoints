@@ -39,10 +39,10 @@ class Login:
         check = cursor.fetchall()
 
         if (len(check) > 0):
-            userBytes = password.encode('utf-8') 
+            userBytes = password.encode('utf-8')
             bytes = check[0][0]
-            bytes = bytes.encode('utf-8') 
-            result = bcrypt.checkpw(userBytes, bytes) 
+            bytes = bytes.encode('utf-8')
+            result = bcrypt.checkpw(userBytes, bytes)
             return result
         
         return False  

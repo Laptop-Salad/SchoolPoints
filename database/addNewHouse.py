@@ -42,7 +42,7 @@ cursor = conn.cursor()
 
 #cursor.execute(("ALTER TABLE parents ADD resetpassword int"))
 
-#cursor.execute("UPDATE parents SET resetpassword = 1")
+#cursor.execute("UPDATE teachers SET resetpassword = 0")
 
 print("Records added to Database")
 conn.commit()
